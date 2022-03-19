@@ -1,0 +1,18 @@
+{
+  "serviceHistory": {
+    "home": {
+      "title": "Total payment"
+    },
+    "emp_name": "Employee name",
+    "payment_rate": "Payment rate",
+    "status": "Status",
+    "store": "Store",
+    "total_payment": "Total payment",
+    "service_type": "Service type",
+    "start_time": "Start time",
+    "end_time": "End time",
+    "created_date": "Created date",
+    "updated_date": "Updated date",
+    "sumTotalPayment": "Total"
+  }
+}

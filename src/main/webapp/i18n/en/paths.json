@@ -1,0 +1,16 @@
+{
+  "path": {
+    "home": "Home",
+    "projects": "Projects",
+    "info": "Information",
+    "profile": "Profile",
+    "detail": "Detail",
+    "language": "Languages",
+    "exp": "Experience",
+    "edu": "Education",
+    "bank": "Bank Info",
+    "deals": "Agreement",
+    "doc": "Relevant Document",
+    "404": "Page not founnd"
+  }
+}

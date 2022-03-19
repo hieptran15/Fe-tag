@@ -1,0 +1,13 @@
+@import '../../../content/scss/vars';
+
+.wr-breadcrumb {
+  * {
+    font-size: 14px;
+  }
+
+  a {
+    font-weight: 400;
+    color: $text-color;
+    display: inline-block;
+  }
+}

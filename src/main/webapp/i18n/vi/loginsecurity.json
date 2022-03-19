@@ -1,0 +1,19 @@
+{
+  "security": {
+    "title": "Đăng nhập và bảo mật",
+    "username": "Tên người dùng:",
+    "password": "Mật khẩu",
+    "btnedit": "Chỉnh sửa",
+    "form": {
+      "currentpassword": "Mật khẩu hiện tại",
+      "currentpassword.placeholder": "Nhập mật khẩu",
+      "validpass": "Mật khẩu không được để trống",
+      "duplicate": "Mật khẩu mới không được trùng với mật khẩu hiện tại",
+      "invalid": "Mật khẩu không đúng! Vui lòng thử lại",
+      "newpassword": "Mật khẩu mới",
+      "confirm": "Xác nhận",
+      "confirm.placeholder": "Xác nhận mật khẩu",
+      "match": "Mật khẩu không trùng nhau"
+    }
+  }
+}

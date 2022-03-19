@@ -1,0 +1,278 @@
+@import '../../../content/scss/vars';
+
+.modal-body {
+  padding: 0;
+}
+
+.TitleForm {
+  color: #1e9097;
+  margin-bottom: 10%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.username-label {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 10%;
+}
+
+.forgot__pass {
+  padding-left: 40px !important;
+
+  button:focus {
+    outline: none;
+  }
+
+  a {
+    font-weight: 400;
+  }
+}
+
+form.edit-form h2 {
+  color: #45aea7;
+  text-align: center;
+  margin-bottom: 27px;
+  font-weight: 600;
+}
+
+form.form.edit-form .form-group input {
+  border: 1px solid #8080806e;
+  border-radius: 8px;
+  height: 52px;
+}
+
+button.button__login {
+  width: 100%;
+  border-radius: 7px;
+  border: 1px solid #80808087;
+  height: 40px;
+  background: #45aea7;
+  color: white;
+  font-size: 20px;
+  margin-top: 36px;
+  font-weight: 700;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+form.form.edit-form .form-group {
+  margin: 16px 0;
+}
+
+.TitleName {
+  color: #1e9097;
+  margin-bottom: 10%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.form_check {
+  margin-top: 10%;
+  color: #6f6f78;
+  align-items: center;
+
+  label {
+    display: flex;
+
+    input {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+:host ::ng-deep {
+  .pi {
+    font-size: 10px;
+  }
+}
+
+:host ::ng-deep {
+  .p-dialog .p-dialog-header {
+    border: none;
+    padding: 0;
+  }
+}
+
+.btn_login {
+  font-weight: 700;
+}
+
+.button__register {
+  font-size: 16px;
+  color: #6f6f78;
+  font-weight: 400;
+  margin-bottom: 4%;
+
+  a {
+    font-weight: 400;
+    cursor: pointer;
+    color: #45aea7;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.form-group {
+  font-style: normal;
+  color: #5e5e5e;
+  font-size: 20px;
+  margin-bottom: 10%;
+
+  input {
+    margin: 2% 0;
+    padding: 5%;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 0.5px solid #6f6f78;
+    box-sizing: border-box;
+  }
+
+  label {
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+
+.btn_FogotPass {
+  border: none;
+  color: #6f6f78;
+  background: white;
+}
+
+.d-flex {
+  justify-content: space-between;
+}
+
+.title_modal {
+  font-weight: bold !important;
+  width: 100%;
+  text-align: center;
+}
+
+.modal_input {
+  width: 100%;
+
+  input {
+    margin-top: 3%;
+    width: 100%;
+    border: 0.5px solid #6f6f78;
+    border-radius: 10px;
+    padding: 2% 0 2% 5%;
+    color: #495057;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.modal_footer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.p-button-text {
+  background: chartreuse;
+}
+
+:host ::ng-deep .p-dialog {
+  header {
+    text-align: center;
+    width: 100%;
+  }
+  .p-dialog-content {
+    padding: 0 2rem 0 2rem;
+  }
+  margin: 0 0.5rem 0 0;
+  min-width: 10rem;
+}
+
+p {
+  margin: 0;
+}
+
+:host ::ng-deep .p-dialog .p-button {
+  min-width: 6rem;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.p-dialog-header {
+  padding: 0;
+}
+
+.body_modal {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  form {
+    width: 100%;
+
+    .errorMessage {
+      margin-top: 2%;
+      color: red;
+    }
+  }
+}
+
+.btn_cancel {
+  background-color: #c4c4c4;
+  border-color: #c4c4c4;
+  width: 100px;
+  color: white;
+
+  :hover {
+    color: white;
+  }
+}
+
+.btn_confirm {
+  width: 100px;
+  background-color: $color-main;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  :hover {
+    color: white;
+  }
+}
+
+.group_button {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 30px;
+  margin-bottom: 18px;
+
+  button {
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+.title_modal {
+  font-weight: 500;
+  font-size: 18px;
+  color: #021b1e;
+}
+
+button:focus {
+  outline: 0;
+}
+
+.modal-header {
+  border-bottom: none;
+}

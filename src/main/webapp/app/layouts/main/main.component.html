@@ -1,0 +1,312 @@
+<!-- <jhi-page-ribbon></jhi-page-ribbon> -->
+<p-toast position='top-right'></p-toast>
+<!-- <div>
+   <router-outlet name="navbar"></router-outlet>
+</div> -->
+<div style='display: flex' class='taggerPage' *ngIf='login === true; else other'>
+    <input type='checkbox' id='check' />
+    <div *ngIf='login === true' class='slideBar'>
+        <div class='top-sidebar'>
+            <div class='pl-4 mb-1'>
+                <label for='check'>
+                    <svg width='25' height='20'>
+                        <use xlink:href='#ico_hamburger'></use>
+                    </svg>
+                </label>
+                <img src='../../../content/images/logo-content.png' />
+            </div>
+            <div class='line_top'></div>
+            <!--      <a routerLink="/profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">-->
+            <!--        <div  class="d-flex active__div" id='active-div__top'>-->
+            <!--          <div>-->
+            <!--            <svg class="icon-sidebar">-->
+            <!--              <use xlink:href="#ico_home"></use>-->
+            <!--            </svg>-->
+            <!--            <span>Tổng quan</span>-->
+            <!--          </div>-->
+            <!--        </div>-->
+            <!--      </a>-->
+            <a routerLink='/projects' routerLinkActive='active'>
+                <div class='d-flex active__div'>
+                    <div>
+                        <svg class='icon-sidebar'>
+                            <use xlink:href='#ico_box'></use>
+                        </svg>
+                        <span jhiTranslate='project.title'></span>
+                    </div>
+                </div>
+            </a>
+            <a routerLink='/profile/detail' routerLinkActive='active'>
+                <div class='d-flex active__div'>
+                    <div>
+                        <svg class='icon-sidebar'>
+                            <use xlink:href='#ico_user'></use>
+                        </svg>
+                        <span jhiTranslate='project.profile'>Hồ sơ cá nhân</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class='bottom-sidebar'>
+            <div class='line'></div>
+            <a role='button' (click)='showModalQC = true' class='QC'>
+                <div class='d-flex active__div'>
+                    <div>
+                        <svg class='icon-sidebar'>
+                            <use xlink:href='#ico_qa'></use>
+                        </svg>
+                        <span jhiTranslate='project.Q&A'>Hỏi đáp</span>
+                    </div>
+                </div>
+            </a>
+            <a role='button' (click)='showModalUsermanual = true' class='usermanual'>
+                <div class='d-flex active__div'>
+                    <div>
+                        <svg class='icon-sidebar'>
+                            <use xlink:href='#ico_file'></use>
+                        </svg>
+                        <span jhiTranslate='project.userManual'>Hướng dẫn sử dụng</span>
+                    </div>
+                </div>
+            </a>
+            <a target='_blank' rel='noopener noreferrer' href='https://tagon.ai/'>
+                <div class='d-flex active__div'>
+                    <div>
+                        <svg class='icon-sidebar'>
+                            <use xlink:href='#ico_ball'></use>
+                        </svg>
+                        <span jhiTranslate='project.goToWeb'>Đi đến trang web</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class='content'>
+        <div class='content-details'>
+            <!-- <p *ngIf="login === true">
+                        <button type="button" (click)="logout()"> Log out</button>
+                        </p> -->
+
+            <div style='border-radius: 15px' class='card jh-card'>
+                <div>
+                    <jhi-navbar></jhi-navbar>
+                </div>
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+    <!-- <jhi-footer></jhi-footer> -->
+</div>
+<ng-template #other>
+    <div style='background: white' class='taggerPage-out'>
+        <div class='content-out'>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</ng-template>
+<div id='all-icons'></div>
+<p-dialog [(visible)]='showModalQC' header="{{'qc.title' | translate}} " [style]="{width: '80vw'}" [modal]='true'>
+    <p-accordion>
+        <p-accordionTab *ngFor='let item of listQuestion' header='{{item.ask | translate}}'>
+            <p>{{item.answer | translate}}</p>
+        </p-accordionTab>
+    </p-accordion>
+</p-dialog>
+<p-dialog [(visible)]='showModalUsermanual' header=' ' [modal]='true' [style]="{width: '50vw'}">
+    <div class='body_modaluser'>
+        <div class='body_modaluser__title' jhiTranslate='usermanual.title'></div>
+        <div jhiTranslate='usermanual.titlei'></div>
+        <p jhiTranslate='usermanual.first'></p>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-login.png' alt=''>
+        </div>
+        <div jhiTranslate='usermanual.firstone'></div>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-register.png' alt=''>
+        </div>
+        <p jhiTranslate='usermanual.firsttwo'></p>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/activesuccess.png' alt=''>
+        </div>
+        <p jhiTranslate='usermanual.second'></p>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/list-project.png' alt=''>
+        </div>
+        <p jhiTranslate='usermanual.login'></p>
+
+        <p>+
+            <svg class='icon-cancel'>
+                <use xlink:href='#ico_cancel'></use>
+            </svg>
+            <span jhiTranslate='usermanual.no'></span></p>
+        <p>+
+            <svg class='icon-tick'>
+            <use xlink:href='#ico_cancel'></use>
+        </svg>
+            <span jhiTranslate='usermanual.yes'></span></p>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile1.png' alt=''>
+        </div>
+        <p jhiTranslate='usermanual.updatebasic'></p>
+
+
+
+        <p>
+            <span jhiTranslate='usermanual.click'></span> <span><svg class='icon-edit'>
+            <use xlink:href='#ico_edit'></use>
+        </svg><span jhiTranslate='usermanual.updatebasic'></span></span>
+        </p>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile2.png' alt=''>
+        </div>
+
+        <span hiTranslate='usermanual.updatebasic'></span>
+
+        <p jhiTranslate='usermanual.save'></p>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile3.png' alt=''>
+        </div>
+
+        <p jhiTranslate='usermanual.clickno'></p>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile4.png' alt=''>
+        </div>
+
+        <p jhiTranslate='usermanual.after'></p>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile5.png' alt=''>
+        </div>
+
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile6.png' alt=''>
+        </div>
+
+
+
+
+        <p jhiTranslate='usermanual.updatelanguage'></p>
+
+       <p> <span jhiTranslate='usermanual.click'></span> <span><svg class='icon-edit'>
+            <use xlink:href='#ico_edit'></use>
+        </svg></span> <span jhiTranslate='usermanual.selectlanguage'></span></p>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile7.png' alt=''>
+        </div>
+
+
+        <span jhiTranslate='usermanual.click'></span> <span><svg class='icon-cancel'>
+                <use xlink:href='#ico_cancel'></use>
+            </svg></span> <span jhiTranslate='usermanual.cancel'></span>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile8.png' alt=''>
+        </div>
+
+        <span jhiTranslate='usermanual.after10'></span> <span><svg class='icon-tick'>
+                <use xlink:href='#ico_tick'></use>
+            </svg></span> <span jhiTranslate='usermanual.pagination'></span>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile9.png' alt=''>
+        </div>
+
+        <p jhiTranslate='usermanual.updateexp'></p>
+
+        <span jhiTranslate='usermanual.click'></span> <span><img width='3%' src='../../../../webapp/content/images/user-manual-profile-add.png '></span> <span jhiTranslate='usermanual.state'></span>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile10.png' alt=''>
+        </div>
+
+
+        <span jhiTranslate='usermanual.input'></span> <span><svg class='icon-cancel'>
+                <use xlink:href='#ico_cancel'></use>
+            </svg></span> <span jhiTranslate='usermanual.state1'></span>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile11.png' alt=''>
+        </div>
+
+        <span jhiTranslate='usermanual.click'></span> <span><svg class='icon-tick'>
+                <use xlink:href='#ico_tick'></use>
+            </svg></span> <span jhiTranslate='usermanual.state3'></span>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile12.png' alt=''>
+        </div>
+
+        <p jhiTranslate='usermanual.updateedu'></p>
+
+        <span jhiTranslate='usermanual.click'></span> <span><img width='3%' src='../../../../webapp/content/images/user-manual-profile-add.png '></span>  <span jhiTranslate='usermanual.state4'></span>
+
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile13.png' alt=''>
+        </div>
+
+
+
+
+
+        <span jhiTranslate='usermanual.input1'></span> <span><svg class='icon-cancel'>
+                <use xlink:href='#ico_cancel'></use>
+            </svg></span> <span jhiTranslate='usermanual.state5'></span>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile14.png' alt=''>
+        </div>
+
+
+
+        <span jhiTranslate='usermanual.click'></span> <svg class='icon-tick'>
+        <use xlink:href='#ico_tick'></use>
+    </svg><span></span> <span jhiTranslate='usermanual.state6'></span>
+
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile15.png' alt=''>
+        </div>
+
+
+        <p jhiTranslate='usermanual.updatebank'></p>
+
+
+
+        <span jhiTranslate='usermanual.click'></span> <span><img width='3%' src='../../../../webapp/content/images/user-manual-profile-add.png '></span> <span jhiTranslate='usermanual.state7'></span>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile16.png' alt=''>
+        </div>
+
+
+        <span jhiTranslate='usermanual.input2'></span> <span><svg class='icon-cancel'>
+        <use xlink:href='#ico_cancel'></use>
+    </svg></span> <span jhiTranslate='usermanual.state8'></span>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile17.png' alt=''>
+        </div>
+
+
+        <span jhiTranslate='usermanual.after1'></span> <span><svg class='icon-tick'>
+        <use xlink:href='#ico_tick'></use>
+    </svg></span> <span jhiTranslate='usermanual.state9'></span>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile18.png' alt=''>
+        </div>
+
+
+
+
+
+        <p jhiTranslate='usermanual.updatedoc'></p>
+
+        <span jhiTranslate='usermanual.click'></span> <span><img width='3%' src='../../../../webapp/content/images/user-manual-profile-add.png '></span> <span jhiTranslate='usermanual.state10'></span>
+
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile20.png' alt=''>
+        </div>
+
+
+
+        <p jhiTranslate='usermanual.input11'></p>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile21.png' alt=''>
+        </div>
+
+        <p jhiTranslate='usermanual.input12'></p>
+        <div class='image_modal'>
+            <img width='100%' src='../../../../webapp/content/images/user-manual-profile22.png' alt=''>
+        </div>
+    </div>
+</p-dialog>

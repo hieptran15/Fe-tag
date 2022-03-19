@@ -1,0 +1,61 @@
+{
+  "userManagement": {
+    "home": {
+      "title": "Tài khoản",
+      "createLabel": "Tạo tài khoản mới",
+      "createOrEditLabel": "Tạo hoặc sửa tài khoản"
+    },
+    "created": "Một tài khoản mới đã được tạo với định danh {{ param }}",
+    "updated": "Một tài khoản đã được cập nhật với định danh {{ param }}",
+    "deleted": "Một tài khoản đã bị xóa với định danh {{ param }}",
+    "delete": {
+      "question": "Bạn có chắc chắn muốn xóa tài khoản {{ login }}?"
+    },
+    "detail": {
+      "title": "Tài khoản"
+    },
+    "login": "Tên đăng nhập",
+    "expiredDate": "Ngày hết hạn",
+    "firstName": "Tên",
+    "lastName": "Họ",
+    "sex": "Giới tính",
+    "sex.male": "Nam",
+    "sex.female": "Nữ",
+    "sex.other": "Khác",
+    "email": "Email",
+    "activated": "Kích hoạt",
+    "deactivated": "Khóa",
+    "profiles": "Các quyền",
+    "langKey": "Ngôn ngữ",
+    "createdBy": "Người tạo",
+    "createdDate": "Ngày tạo",
+    "lastModifiedBy": "Người sửa",
+    "lastModifiedDate": "Ngày sửa",
+    "description": "Giới thiệu",
+    "mobile": "Số điện thoại",
+    "personalId": "CMT / CCCD",
+    "personalIdImage": "Ảnh chụp CMT",
+    "drinkLevel": "Tửu lượng",
+    "studyLevel": "Học vấn",
+    "birthYear": "Năm sinh",
+    "image": "Ảnh",
+    "rating": "Điểm tin cậy",
+    "lang": "Ngôn ngữ",
+    "paymentRate": "Giá tiền mỗi giờ",
+    "drinklevel.none": "Không",
+    "drinklevel.novice": "Nhấp môi (<50ml)",
+    "drinklevel.average": "Trung bình (<100ml)",
+    "drinklevel.aboveaverage": "Khá (<200ml)",
+    "drinklevel.good": "Giỏi (<500ml)",
+    "drinklevel.expert": "Cao thủ (>500ml)",
+    "studyLevel.highschool": "Phổ thông",
+    "studyLevel.college": "Cao đẳng",
+    "studyLevel.university": "Đại học",
+    "studyLevel.master": "Thạc sỹ",
+    "totalPayment": "Doanh thu",
+    "languages.english": "Tiếng Anh",
+    "languages.japanese": "Tiếng Nhật",
+    "languages.korean": "Tiếng Hàn",
+    "languages.chinese": "Tiếng Trung"
+  }
+}

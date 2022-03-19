@@ -1,0 +1,540 @@
+@import '../../../content/scss/vars';
+
+.taggerProject {
+  margin: 10px 37px;
+
+  h1 {
+    font-size: $font24;
+    color: $textColor;
+    font-weight: normal;
+    margin-bottom: 24px;
+    margin-top: 25px;
+  }
+
+  &__edit {
+    display: flex;
+
+    &__left {
+      width: 100%;
+    }
+  }
+
+  &__create-project {
+    button {
+      float: right;
+      background: $primary-color;
+      font-weight: normal;
+      font-size: $font14;
+      border-radius: 6px;
+      color: white;
+      border: none;
+      padding: 10px 36px;
+      display: flex;
+      outline: none;
+
+      div {
+        svg.icon-create-pro {
+          width: 14px;
+          height: 14px;
+        }
+      }
+
+      span {
+        padding-top: 2px;
+        padding-left: 8px;
+      }
+    }
+  }
+}
+
+.page-note-project {
+  background: $primary-color;
+  border-radius: 10px;
+  margin-top: 25px;
+
+  h2 {
+    color: white;
+    font-weight: 600;
+    text-align: center;
+    font-size: $font24;
+    padding-top: 10px;
+  }
+}
+
+.info-worker {
+  background: white;
+  height: 70vh;
+  border-radius: 10px;
+  width: 100%;
+  position: relative;
+}
+
+.check-info-worker {
+  background: white;
+  width: 100%;
+  min-height: 70vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .edit-check-text {
+    h3 {
+      font-size: $font24;
+      font-weight: 600;
+    }
+  }
+
+  .edit-check-link {
+    svg {
+      width: 11px;
+      height: 19px;
+      fill: $color-main;
+      cursor: pointer;
+    }
+
+    a {
+      font-size: $font20;
+      text-decoration: none;
+      color: $color-main;
+    }
+  }
+}
+
+.p-grid.edit-page {
+  margin: 7px 4px;
+}
+
+.avatar-worker img {
+  width: 155px;
+  border-radius: 50%;
+  height: 155px;
+}
+
+.avatar-worker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name-worker {
+  text-align: center;
+  font-size: $font18;
+  font-weight: 500;
+  padding-bottom: 10px;
+  color: $color-main;
+  padding-top: 10px;
+}
+
+.info-worker-info h1 {
+  text-align: center;
+}
+
+.rate-leve {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 10px;
+  color: $color-main;
+}
+
+.sdt-worker {
+    display: flex;
+    justify-content: center;
+  align-items: center;
+  font-weight: 400;
+
+  span {
+    color: $color-main;
+    padding-left: 5px;
+  }
+
+  b {
+    color: $color-main;
+  }
+}
+
+.time-do-work {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+
+  span {
+    color: $color-main;
+    padding-left: 5px;
+  }
+
+  b {
+    color: $color-main;
+  }
+}
+
+.info-worker-info {
+  padding-top: 33px;
+}
+
+.info-worker-details {
+  position: absolute;
+  bottom: 12px;
+  right: 18px;
+  color: $primary-color;
+}
+
+.page-project {
+  margin-top: 20px;
+  display: flex;
+}
+
+.edit-check-text h3 {
+  font-weight: 400;
+  font-size: $font18;
+}
+
+.project-item {
+  background: white;
+  border-radius: 6px;
+  width: 100%;
+  color: $ndTextColor;
+  display: flex;
+  box-shadow: 0px 3px 20px rgba(0, 0, 0, 0.04);
+
+  &-details {
+    padding: 10px 12px;
+    cursor: pointer;
+    width: 70%;
+
+    .type-project {
+      bottom: 0;
+      left: 6%;
+      font-size: $font18;
+      display: flex;
+
+      &__icon {
+        padding-right: 10px;
+
+        svg.icon-calendar {
+          width: 14px;
+          height: 14px;
+          fill: $nd2TextColor;
+        }
+
+        svg.icon-user-pro {
+          width: 14px;
+          height: 14px;
+          fill: $nd2TextColor;
+        }
+
+        svg.icon-money-pro {
+          width: 14px;
+          height: 14px;
+          fill: $nd2TextColor;
+        }
+      }
+
+      span {
+        font-size: $font12;
+        font-weight: normal;
+        color: $nd2TextColor;
+        padding-top: 6px;
+      }
+    }
+
+    span.name-project {
+      font-size: $font14;
+      color: $textColor;
+      font-weight: 500;
+    }
+  }
+
+  &-details-right {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+  }
+}
+
+.page-project-left {
+  width: 100%;
+  &__edit-paginator {
+    float: left;
+  }
+}
+
+.page-project-right {
+  width: 45%;
+  margin-top: 70px;
+  padding-left: 20px;
+
+  h1.project-titles {
+    text-align: center;
+    padding-top: 20px;
+    color: white;
+    font-size: $font18;
+  }
+
+  &__top {
+    background: white;
+    width: 100%;
+    height: 287px;
+    border-radius: 8px;
+
+    h4 {
+      font-weight: 500;
+      font-size: $font16;
+      padding: 13px 30px;
+    }
+  }
+
+  &__bottom {
+    background: white;
+    width: 100%;
+    border-radius: 8px;
+    min-height: 330px;
+
+    h4 {
+      font-weight: 500;
+      font-size: $font16;
+      color: $textColor;
+      padding: 13px 30px;
+    }
+
+    &__details {
+      display: flex;
+      border-bottom: 1px solid #80808029;
+      padding: 10px 0;
+
+      .avatar-anotator {
+        padding-left: 51px;
+
+        img {
+          width: 35px;
+        }
+      }
+
+      .info-detais-anotator {
+        padding-left: 11px;
+
+        b {
+          font-weight: normal;
+          font-size: 14px;
+          color: $textColor;
+        }
+
+        p {
+          font-weight: normal;
+          font-size: $font12;
+          color: $nd2TextColor;
+        }
+      }
+
+      a {
+        padding-left: 27%;
+        font-weight: 600;
+        font-size: $font12;
+        color: $primary-color;
+        padding-top: 11px;
+      }
+    }
+  }
+}
+
+.pro-chart-left {
+  width: 40%;
+}
+
+.pro-details-right {
+  width: 60%;
+
+  &__top {
+    margin: 0 0 0 19%;
+  }
+
+  &__table {
+    width: 100%;
+  }
+
+  span {
+    font-size: $font18;
+    color: white;
+    font-weight: 400;
+  }
+}
+
+.pro-details-right-td-left {
+  font-size: $font18;
+}
+
+.pro-details-right table {
+  color: white;
+}
+
+.pro-button button {
+  border-radius: 6px;
+  background: white;
+  border: 1px solid $primary-color;
+  color: $primary-color;
+  margin: 0 23px;
+}
+
+.pro-button {
+  position: absolute;
+  bottom: 6%;
+  left: 19%;
+}
+
+.pro-details-right span b {
+  padding-left: 13px;
+}
+
+.editStatusNew {
+  width: 100% !important;
+}
+
+.card-detail-open {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+
+  &__left {
+    padding: 10px 10px;
+  }
+
+  &__center {
+    padding: 10px 10px;
+  }
+
+  &__right {
+    padding: 10px 10px;
+  }
+}
+
+.card-detail-open div b {
+  font-size: $font18;
+}
+
+.pro-details-right-open-detail {
+  margin: 0 30px;
+}
+
+.edit-paginator.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+  background: #31c0be !important;
+  border-color: #31c0be !important;
+  color: white !important;
+}
+
+.filter-and-sort {
+  position: relative;
+  display: flex;
+}
+
+.sort-project {
+  position: absolute;
+  right: 1%;
+  display: flex;
+
+  &__right {
+    margin-left: 10px;
+  }
+
+  &__left {
+    color: $primary-color;
+    font-size: $font18;
+    padding-top: 7px;
+  }
+}
+
+.filter-project {
+  display: flex;
+
+  &__right {
+    margin-left: 10px;
+  }
+}
+
+.select-type-project {
+  border-bottom: 1px solid #80808040;
+  padding-bottom: 10px;
+  margin-top: 20px;
+}
+
+.select-type-project-into {
+  background: white;
+  border-radius: 6px;
+  padding: 0px 13px;
+  transition: 0.2s;
+  cursor: pointer;
+  filter: drop-shadow(0px 3px 20px rgba(0, 0, 0, 0.04));
+
+  &__icon-left {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    svg.icon-image-select {
+      width: 34px;
+      height: 34px;
+      fill: $nd2TextColor;
+    }
+
+    svg.icon-video-select {
+      width: 34px;
+      height: 34px;
+      fill: $nd2TextColor;
+    }
+
+    svg.icon-abc-select {
+      width: 38px;
+      height: 38px;
+      fill: $nd2TextColor;
+    }
+
+    svg.icon-phone-select {
+      width: 34px;
+      height: 28px;
+      fill: $nd2TextColor;
+    }
+  }
+
+  &__icon-right {
+    padding-top: 9px;
+    padding-left: 12px;
+
+    b {
+      font-weight: normal;
+      font-size: $font14;
+      color: $textColor;
+    }
+
+    p {
+      font-weight: normal;
+      font-size: $font12;
+      color: $nd2TextColor;
+    }
+  }
+}
+
+.select-type-project-into:hover {
+  box-shadow: 1px 4px 11px 0px rgba(0, 0, 0, 0.25);
+  transform: scale(1.1);
+}
+
+pro-details-content {
+  display: flex;
+}
+svg.icon-star {
+  width: 20px;
+  height: 20px;
+  fill: #ffc107;
+  margin-left: 4px;
+  margin-bottom: 4px;
+}
+
+.active {
+  background: blue;
+}

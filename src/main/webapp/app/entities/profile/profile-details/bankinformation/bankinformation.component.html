@@ -1,0 +1,115 @@
+<div class="title-info">
+    <p jhiTranslate="profile.bank.title"></p>
+    <button
+        *ngIf="!checkEnableButtonAdd()"
+        pButton
+        type="button"
+        icon="pi pi-plus"
+        class="p-button-raised icon-add"
+        (click)="addEdu()"
+    ></button>
+</div>
+<p class="show-empty" *ngIf="!isShowTable" jhiTranslate="profile.noInfo"></p>
+<div class="main" *ngIf="isShowTable">
+    <div class="foreign-language">
+        <p-table #table [value]="listBank" dataKey="id" editMode="row">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="title-table--left" jhiTranslate="profile.bank.bank"></th>
+                    <th class="title-table--right" jhiTranslate="profile.bank.acountNumber"></th>
+                    <th class="title-table--right" jhiTranslate="profile.bank.action"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row let-editing="editing" let-ri="rowIndex">
+                <tr class="row-item" [pEditableRow]="row">
+                    <td pEditableColumn>
+                        <p-cellEditor class="cell--disable cell--disable-left" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <p-dropdown
+                                    class="p-col-8 p-md-12 p-lg-10 p-lg-8"
+                                    [(ngModel)]="bankSelected"
+                                    optionLabel="label"
+                                    [options]="listBankName"
+                                    (onChange)="onChangeSelectBank()"
+                                    [filter]="true"
+                                    [placeholder]="'profile.bank.selectBank' | translate"
+                                >
+                                    <ng-template pTemplate="selectedItem">
+                                        <div>{{ bankSelected.label  }}</div>
+                                    </ng-template>
+                                    <ng-template let-name pTemplate="item">
+                                        <div>{{ name.label  }}</div>
+                                    </ng-template>
+                                </p-dropdown>
+                                <small class="text-danger" *ngIf="errBank && editing">{{errBank|translate}}</small>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ getBankName(row.bankName) }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td pEditableColumn class="title-table--right">
+                        <p-cellEditor class="cell--disable" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <input pInputText
+                                       (keypress)="checkNumber($event)"
+                                       (keydown)="checkValidateNumber()"
+                                       maxlength="16"
+
+                                       [(ngModel)]="accountNumber"/>
+                                <small class="text-danger"
+                                       *ngIf="errAccNumber && editing" [jhiTranslate]="errAccNumber"
+                                       [translateValues]="{ number: 7 }"></small>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ row.bankAccount }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td class="action">
+                        <div *ngIf="!editing && !isEditRowItem" (click)="onEditRowItem(row)" pInitEditableRow
+                             class="p-mr-4">
+                            <svg class="icon-edit icon-edit--sm">
+                                <use xlink:href="#ico_edit"></use>
+                            </svg>
+                        </div>
+                        <div *ngIf="!editing && !isEditRowItem" pSaveEditableRow (click)="openModalDelete()">
+                            <svg class="icon-edit icon-edit--sm icon-edit--red">
+                                <use xlink:href="#ico_delete"></use>
+                            </svg>
+                        </div>
+                        <button
+                            *ngIf="editing"
+                            class="no-outline"
+                            pButton
+                            type="button"
+                            pSaveEditableRow
+                            icon="pi pi-check"
+                            (click)="updateEdu(row)"
+                            class="p-button-rounded p-button-raised p-button-text p-button-success p-mr-3"
+                        ></button>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            type="button"
+                            pCancelEditableRow
+                            (click)="onRowEditCancel(row)"
+                            icon="pi pi-times"
+                            class="p-button-rounded p-button-raised p-button-text p-button-danger"
+                        ></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<p-dialog [(visible)]="showModalDelete" [header]="'profile.comfirmtitle'|translate" [modal]="true">
+    <div class="body-modal">
+        <p class="title-modal" jhiTranslate="profile.comfirm"></p>
+        <div class="group-button">
+            <button type="button" class="btn btn-confirm" (click)="deleteItem()" jhiTranslate="profile.yes"></button>
+            <button type="button" class="btn btn-cancel" (click)="showModalDelete=false"
+                    jhiTranslate="profile.no"></button>
+        </div>
+    </div>
+</p-dialog>

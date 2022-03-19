@@ -1,0 +1,19 @@
+{
+  "security": {
+    "title": "Login and security",
+    "username": "User name:",
+    "password": "Password",
+    "btnedit": "Edit",
+    "form": {
+      "currentpassword": "Current password",
+      "currentpassword.placeholder": "Enter password",
+      "validpass": "Password can not be blank",
+      "duplicate": "New password is not duplicated with current password",
+      "invalid": "Wrong password! Please try again",
+      "newpassword": "New Password ",
+      "confirm": "Confirm ",
+      "confirm.placeholder": "Confirm password",
+      "match": "Passwords do not match"
+    }
+  }
+}

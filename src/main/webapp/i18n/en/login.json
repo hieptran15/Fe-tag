@@ -1,0 +1,37 @@
+{
+  "login": {
+    "title": "Sign in",
+    "policy": "Policy",
+    "invitefriend": "Invited friends",
+    "form": {
+      "password": "Password",
+      "password.placeholder": "Your password",
+      "rememberme": "Remember me",
+      "button": "Sign in"
+    },
+    "reset": {
+      "success": "Success! Please check your mailbox to reset your password",
+      "fail": "Failed, the email you entered is invalid"
+    },
+    "messages": {
+      "successtitle": "Success",
+      "errortitle": "Error",
+      "changesuccess": "Change Password success",
+      "minlenght": "Password has at least 8 characters",
+      "success": "Login Success",
+      "error": {
+        "authentication": "Failed to sign in! Please check your credentials and try again."
+      }
+    },
+    "popup": {
+      "header": "Confirm",
+      "title": "Did you forget your password",
+      "send": "Send",
+      "cancel": "Cancel",
+      "main": "We will send you an email with a link to reset your password. Please check carefully Your email address is below, then click 'Submit'."
+    },
+    "password": {
+      "forgot": "Did you forget your password?"
+    }
+  }
+}

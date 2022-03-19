@@ -1,0 +1,277 @@
+@import '../../../content/scss/vars';
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.taggerPage {
+  background: #45aea7;
+}
+
+.slideBar {
+  //background: #093B40;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: space-between;
+  min-height: 100%;
+  padding-top: 15px;
+  width: 250px;
+  transition: 0.3s;
+}
+
+.slideBar a {
+  color: white;
+  display: block;
+  width: 95%;
+  line-height: 50px;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-size: $font20;
+  position: relative;
+  border-radius: 4px;
+  margin-left: 5%;
+  border-radius: 40px 0 0 40px;
+}
+:host ::ng-deep {
+  .p-dialog .p-dialog-content {
+    padding: 2rem;
+  }
+}
+.QC {
+  color: white;
+  display: block;
+  width: 95%;
+  line-height: 50px;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-size: $font20;
+  position: relative;
+  border-radius: 4px;
+  margin-left: 5%;
+  border-radius: 40px 0 0 40px;
+}
+.usermanual {
+  color: white;
+  display: block;
+  width: 95%;
+  line-height: 50px;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-size: $font20;
+  position: relative;
+  border-radius: 4px;
+  margin-left: 5%;
+  border-radius: 40px 0 0 40px;
+}
+// .slideBar a:hover {
+//   background: white;
+// }
+.slideBar i {
+  padding-right: 10px;
+}
+
+label #sidebar_btn {
+  position: fixed;
+  z-index: 1;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  top: 2%;
+  left: 1.2%;
+  transition: 0.5s;
+  transition-property: color;
+  width: 12%;
+  height: auto;
+}
+
+// label #sidebar_btn:hover{
+// 	color:  #45AEA7
+// }
+.slideBar a.active span {
+  font-size: $font14;
+  font-weight: 400;
+  color: $text-color;
+}
+
+.slideBar a.active i {
+  color: $textColor;
+}
+
+#active-div__top {
+  margin-top: 2%;
+}
+
+.active__div {
+  padding-left: 5%;
+  color: white;
+  font-size: $font14;
+  font-weight: 400;
+}
+
+.active {
+  background: $bgColor;
+
+  div {
+    padding-left: 2%;
+    width: 100%;
+  }
+
+  .icon-sidebar {
+    width: 24px;
+    height: 24px;
+    stroke: #45aea7;
+  }
+}
+
+#check {
+  display: none;
+}
+
+
+#check:checked ~ .slideBar {
+  width: 60px;
+}
+
+#check:checked ~ .slideBar .line_top {
+  margin-top: 30%;
+}
+
+#check:checked ~ .slideBar .bottom-sidebar .line_top {
+  margin: 0 8px 0 20px;
+}
+
+#check:checked ~ .slideBar .bottom-sidebar .line {
+  width: 32px;
+  margin: 0 8px 0 20px;
+}
+
+#check:checked ~ .slideBar a span {
+  display: none;
+}
+
+#check:checked ~ .slideBar div img {
+  display: none;
+}
+
+#check:checked ~ .slideBar .bottom-sidebar div div div span {
+  display: none;
+}
+
+
+
+#check:checked ~ .slideBar a {
+  padding-left: 20%;
+  font-size: $font20;
+}
+
+.slideBar a.active div:after,
+.slideBar a.active div:before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  z-index: 9;
+  right: 0;
+  transform: none !important;
+}
+
+.slideBar a.active div::before {
+  top: 100% !important;
+  border-top-right-radius: 50%;
+  box-shadow: 0 -15px 0 0 $bgColor;
+}
+
+.slideBar a.active div:after {
+  bottom: 100% !important;
+  border-bottom-right-radius: 50%;
+  box-shadow: 0 15px 0 0 $bgColor;
+}
+
+.content {
+  height: 100vh;
+  transition: 0.3s;
+  overflow-x: hidden;
+  position: relative;
+  flex: 1;
+}
+
+#check:checked ~ .content {
+  //margin-left: 60px;
+}
+
+.content-details {
+  background: $bgColor;
+  margin: 9px 9px 0px 0px;
+  border-radius: 15px;
+  min-height: 98vh;
+}
+
+.slideBar a:hover {
+  background: #f0f8ff73;
+}
+
+.bottom-sidebar a:hover {
+  background: #45aea7;
+}
+
+.slideBar a.active:hover {
+  background: $bgColor;
+}
+
+.icon-sidebar {
+  width: 24px;
+  height: 24px;
+  stroke: white;
+}
+
+.slideBar div img {
+  margin-left: 26px;
+  width: 98px;
+  height: 42px;
+}
+
+div#all-icons {
+  display: none;
+}
+
+.line {
+  width: 210px;
+  height: 1px;
+  background-color: white;
+  margin: 0 20px;
+}
+
+.line_top {
+  width: 210px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin: 16px 20px 16px 20px;
+}
+.body_modaluser {
+  &__title {
+    font-size: $font16;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+.icon-tick {
+  width: 14px;
+  height: 12px;
+  fill: #91ee70;
+}
+
+.icon-cancel {
+  width: 14px;
+  height: 12px;
+  fill: #f44336;
+}
+.icon-edit {
+  width: 18px;
+  height: 18px;
+  margin-left: 12px;
+  fill: $textColor;
+}

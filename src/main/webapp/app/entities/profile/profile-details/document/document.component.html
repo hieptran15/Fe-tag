@@ -1,0 +1,118 @@
+<div class="title-info">
+    <p jhiTranslate="profile.doc.title"></p>
+    <button
+        pButton
+        (click)="onShowModalAdd()"
+        type="button"
+        icon="pi pi-plus"
+        class="p-button-raised icon-add"
+    ></button>
+</div>
+<p class="note" jhiTranslate="profile.doc.welcom"></p>
+<div>
+
+</div>
+<p class="show-empty" *ngIf="!isShowTable" jhiTranslate="profile.noInfo"></p>
+<div class="main" *ngIf="isShowTable">
+    <div class="foreign-language">
+        <p-table #table [value]="listDoc" dataKey="id" editMode="row">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="title-table--left" jhiTranslate="profile.doc.typeFile"></th>
+                    <th class="title-table--right" jhiTranslate="profile.doc.fileName"></th>
+                    <th class="title-table--right" jhiTranslate="profile.doc.file"></th>
+                    <th class="title-table--right" jhiTranslate="profile.doc.action"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row let-editing="editing" let-ri="rowIndex">
+                <tr class="row-item" [pEditableRow]="row">
+                    <td pEditableColumn>
+                        {{ getDocType(row.docType) | translate}}
+                    </td>
+                    <td pEditableColumn class="title-table--right">
+                        <p [pTooltip]="row.docName">{{row.docName}}</p>
+                    </td>
+                    <td class="dowload">
+                        <div class="btn-download" pSaveEditableRow (click)="onDownLoad(row)">
+                            <svg class="icon-edit icon-edit--sm">
+                                <use xlink:href="#ico_note"></use>
+                            </svg>
+                        </div>
+                    </td>
+                    <td class="action">
+                        <div pSaveEditableRow (click)="openModalDelete(row)">
+                            <svg class="icon-edit icon-edit--sm icon-edit--red">
+                                <use xlink:href="#ico_delete"></use>
+                            </svg>
+                        </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<p-dialog [(visible)]="showModalDelete" [header]="'profile.comfirmtitle'|translate" [modal]="true">
+    <div class="body-modal">
+        <p class="title-modal" jhiTranslate="profile.comfirm"></p>
+        <div class="group-button">
+            <button type="button" class="btn btn-confirm" (click)="deleteItem()" jhiTranslate="profile.yes"></button>
+            <button type="button" class="btn btn-cancel" (click)="showModalDelete=false"
+                    jhiTranslate="profile.no"></button>
+        </div>
+    </div>
+</p-dialog>
+<p-dialog closable="false" [(visible)]="showModalAdd" [header]="'profile.doc.addDocument'|translate" [modal]="true">
+    <div class="modal-create">
+        <div style="margin-right: 62px">
+            <div class="p-field">
+                <label jhiTranslate="profile.doc.typeFile"></label>
+                <p-dropdown
+                    [(ngModel)]="typeFileSelected"
+                    optionLabel="label"
+                    [options]="listTypeFile"
+                    [placeholder]="'profile.doc.selectTypeFile'|translate"
+                >
+                    <ng-template pTemplate="selectedItem">
+                        <div>{{ typeFileSelected?.label | translate }}</div>
+                    </ng-template>
+                    <ng-template let-type pTemplate="item">
+                        <div>{{ type.label | translate }}</div>
+                    </ng-template>
+                </p-dropdown>
+            </div>
+            <div class="p-field">
+                <label for="fileName" jhiTranslate="profile.doc.fileName"></label>
+                <input id="fileName" #search [(ngModel)]="fileName" maxlength="50" (keydown)="onChangeFileName($event)"
+                       [placeholder]="'profile.doc.typeFileName' | translate"
+                       type="text" pInputText/>
+                <small class="text-danger" *ngIf="errFileName">
+                    {{errFileName|translate}}
+                </small>
+            </div>
+        </div>
+        <ngx-dropzone class="drop-zone"
+                      (change)="uploadFile($event)">
+            <div *ngIf="!isFileSelected"
+                 style="display: flex;flex-direction: column;justify-content: center;align-items: center">
+                <p class="text-drop" jhiTranslate="profile.doc.drop"></p>
+                <div>
+                    <svg class="icon-upload">
+                        <use xlink:href="#ico_upload"></use>
+                    </svg>
+                </div>
+                <small class="text-danger" *ngIf="errFile">
+                    {{errFile|translate}}
+                </small>
+            </div>
+            <div *ngIf="isFileSelected"
+                 style="display: flex;flex-direction: column;justify-content: center;align-items: center">
+                <p>{{fileNameSelected}}</p>
+            </div>
+        </ngx-dropzone>
+    </div>
+    <div class="group-button">
+        <button type="button" class="btn btn-confirm" (click)="addDocument()" jhiTranslate="profile.add"></button>
+        <button type="button" class="btn btn-cancel" (click)="cancelAdd()"
+                jhiTranslate="profile.cancel"></button>
+    </div>
+</p-dialog>

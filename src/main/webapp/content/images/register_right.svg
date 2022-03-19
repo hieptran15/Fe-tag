@@ -1,0 +1,10 @@
+
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+    <defs>
+        <symbol viewBox='0 0 684 1024' id='bg_rg'>
+                <path d='M0.5 0H683.5V1024H0.5V0Z' fill='#45AEA7' />
+                <path d='M684 735.843L1 562V1024H684V735.843Z' fill='#80BFBB' />
+                <path d='M684 759.548L0 616V1024H684V759.548Z' fill='#CADDDB' />
+        </symbol>
+    </defs>
+</svg>

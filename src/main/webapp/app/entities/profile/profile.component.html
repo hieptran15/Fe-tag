@@ -1,0 +1,60 @@
+<div class='taggerProject'>
+    <h4 jhiTranslate='profile.overview' class='title_profile'>Tổng quan tài khoản</h4>
+    <div class='page-note-project'>
+        <h2 jhiTranslate='project.annotator'></h2>
+        <div class='p-grid edit-page'>
+            <div class='p-col-4'>
+                <div class='info-worker'>
+                    <div class='info-worker-info'>
+                        <div class='avatar-worker'>
+                            <img
+                                src="{{user?.profilePic === null ? 'content/images/icon_default.jpg' : user?.profilePic}}">
+                        </div>
+                        <div class='name-worker'>{{user?.firstName}}{{user?.lastName}}</div>
+                        <div class='rate-leve'>
+                            <span>{{user?.rating}}</span>
+                            <svg class='icon-star'>
+                                <use xlink:href='#ico_star'></use>
+                            </svg>
+                        </div>
+                        <div class='sdt-worker'>
+                            <table>
+                                <tr>
+                                    <td><b jhiTranslate='project.phone'></b></td>
+                                    <td><span>{{user?.phone}}</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class='time-do-work'>
+                            <table>
+                                <tr>
+                                    <td><b jhiTranslate='project.workingFromDays'></b></td>
+                                    <td><span>{{user?.createdDate | date:'dd/MM/yyyy'}}</span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class='info-worker-details'>
+                        <!--                            <a jhiTranslate="project.details"></a>-->
+                    </div>
+                </div>
+            </div>
+            <div class='p-col-8'>
+                <div class='check-info-worker'>
+                    <div class='edit-check-text'>
+                        <h3 jhiTranslate='project.welcomeNote'></h3>
+                    </div>
+                    <div class='edit-check-link'>
+                        <a routerLink='/profile/detail/info'
+                           jhiTranslate='project.profileInformation'>
+                        </a>
+                        <svg>
+                            <use xlink:href='#ico_link_profile'></use>
+                        </svg>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

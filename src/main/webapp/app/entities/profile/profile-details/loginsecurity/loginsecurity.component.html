@@ -1,0 +1,68 @@
+<div class="card_title">
+    <h4 jhiTranslate="security.title">Đăng nhập và bảo mật</h4>
+</div>
+<div *ngIf="!isEditContact" class="card_body">
+    <div class="">
+        <h5 jhiTranslate="security.username">Tên người dùng:</h5>
+        <p class="text_name">
+            {{ profile ? profile.login : null }}&nbsp;
+        </p>
+    </div>
+   <div class="row_contact">
+       <h5 jhiTranslate="security.password">Mật khẩu:**********</h5>
+       <button jhiTranslate="security.btnedit" class="btn btn_edit" (click)="showEditContact()">Chỉnh sửa</button>
+   </div>
+</div>
+<div *ngIf="isEditContact" class="card_body">
+    <div >
+        <h4 jhiTranslate="security.title" >Đăng nhập và bảo mật</h4>
+        <h5 jhiTranslate="security.username">Tên người dùng:</h5>
+        <p class="text_name">
+            {{ profile ? profile.login : null }}&nbsp;
+        </p>
+    </div>
+    <div class="row_contact">
+        <h5 jhiTranslate="security.password" >Mật khẩu</h5>
+    </div>
+    <form class="form_edit" [formGroup]="contactForm" name="form">
+        <div class="form-group">
+            <b jhiTranslate="security.form.currentpassword">Mật khẩu hiện tại</b>
+            <input formControlName="password" name="password" type="password" class="form-control no-border" placeholder="{{'security.form.currentpassword.placeholder' | translate }}" />
+            <div *ngIf=" contactForm.get('password').errors"  class="errorMessage">
+                <div jhiTranslate="security.form.validpass" class="validate_input" *ngIf="contactForm.get('password').errors.required">Mật khẩu không được để trống</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <b jhiTranslate="security.form.newpassword">Mật khẩu mới *</b>
+            <input formControlName="newPassword" name="newPassword" type="password" class="form-control no-border" placeholder="{{'security.form.currentpassword.placeholder' | translate }}" />
+            <div *ngIf=" contactForm.get('newPassword').errors"  class="errorMessage">
+                <div jhiTranslate="security.form.validpass" class="validate_input" *ngIf="contactForm.get('newPassword').errors.required">Mật khẩu không được để trống</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b jhiTranslate="security.form.confirm">Xác nhận *</b>
+            <input formControlName="rePassword" name="rePassword" type="password" class="form-control no-border" placeholder="{{'security.form.confirm.placeholder' | translate}}" />
+            <div *ngIf=" contactForm.get('rePassword').errors" class="errorMessage">
+                <div jhiTranslate="security.form.validpass" class="validate_input" *ngIf="contactForm.get('rePassword').errors.required">Xác nhận mật khẩu không được để trống</div>
+            <div jhiTranslate="security.form.match" class="validate_input" *ngIf="contactForm.get('rePassword').errors.confirmPasswordValidator"> Mật khẩu không trùng nhau </div>
+        </div>
+
+        <div class="row_button">
+            <button class="btn btn_save" (click)="showModalChangePassWord = true">Lưu</button>
+            <button class="btn btn_cancel" (click)="isEditContact=false">Hủy bỏ</button>
+        </div>
+        </div>
+    </form>
+</div>
+
+<p-dialog [(visible)]="showModalChangePassWord" header="" [modal]="true">
+    <div class="body_modal">
+        <p class="title_modal">Bạn có chắc chắn thực hiện thao tác này không?</p>
+        <div class="group_button">
+            <button type="button" class="btn btn_confirm" (click)="changePassword()">Có</button>
+            <button type="button" class="btn btn_cancel" (click)="showModalChangePassWord = false">Không</button>
+        </div>
+    </div>
+</p-dialog>
+

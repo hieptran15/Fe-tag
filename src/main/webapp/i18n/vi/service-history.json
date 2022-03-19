@@ -1,0 +1,18 @@
+{
+  "serviceHistory": {
+    "home": {
+      "title": "Doanh thu"
+    },
+    "emp_name": "Tên nhân viên",
+    "payment_rate": "Đơn giá",
+    "status": "Trạng thái",
+    "store": "Cửa hàng",
+    "service_type": "Loại dịch vụ",
+    "start_time": "Bắt đầu",
+    "end_time": "Kết thúc",
+    "total_payment": "Doanh thu",
+    "created_date": "Ngày tạo",
+    "updated_date": "Ngày cập nhật",
+    "sumTotalPayment": "Total"
+  }
+}

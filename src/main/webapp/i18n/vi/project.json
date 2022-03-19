@@ -1,0 +1,63 @@
+{
+  "project": {
+    "title": "Danh sách dự án",
+    "taskType": {
+      "IMAGE_CLASSIFICATION": "Phân loại ảnh"
+    },
+    "projectFilters": {
+      "allProjects": "Tất cả dự án"
+    },
+    "selectProject": "Chọn dự án",
+    "projectType": "Loại dự án",
+    "priceSortProject": {
+      "placeholder": "Giá",
+      "allProject": "Tất cả dự án",
+      "openProject": "Dự án mở",
+      "doingProject": "Dự án đang làm",
+      "imageClassification": "Phân loại ảnh",
+      "textClassification": "Phân loại chữ",
+      "editSentence": "Sửa câu",
+      "priceHighToLow": "Giá cao đến thấp",
+      "lowToHighPrice": "Giá Thấp đến cao",
+      "nearestDeadline": "Deadline gần nhất",
+      "furthestDeadline": "Deadline xa nhất"
+    },
+    "manager": "Người quản lý:",
+    "type": "Loại:",
+    "status": "Trạng thái:",
+    "deadline": "Hạn hoàn thành:",
+    "totalSentence": "Tổng số câu:",
+    "registrationTerm": "Hạn đăng ký",
+    "remaining": "Còn lại",
+    "totalMoney": "Tổng số tiền",
+    "seeTheInstructions": "Xem hướng dẫn",
+    "details": "Chi tiết",
+    "continue": "Tiếp tục",
+    "register": "Đăng ký",
+    "sortedBy": "Sắp xếp theo",
+    "allProject": "Tất cả dự án",
+    "phone": "Sđt:",
+    "workingFromDays": "Làm việc từ ngày:",
+    "welcomeNote": "Xin chào, bạn cần  hoàn thiện hồ sơ để tiến hành nhận dự án!",
+    "profileInformation": "Thông tin hồ sơ",
+    "photoProject": "Dự án Ảnh",
+    "videoProject": "Dự án Video",
+    "textProject": "Dự án Text",
+    "audioProject": "Dự án Audio",
+    "projects": "dư án",
+    "addProject": "Thêm dự án",
+    "projectStatus": "Trạng thái dự án",
+    "anoHistory": "Lịch sử hoạt động của Anotator",
+    "contact": "Liên hệ",
+    "openProject": "Dự án mở",
+    "doingProject": "Dự án đang làm",
+    "closeProject": "Dự án đóng",
+    "newProject": "Dự án mới",
+    "annotator": "Người gán nhãn",
+    "profile": "Hồ sơ cá nhân",
+    "Q&A": "Hỏi đáp",
+    "userManual": "Hướng dẫn sử dụng",
+    "goToWeb": "Đi đến trang web",
+    "home": "Trang chủ"
+  }
+}

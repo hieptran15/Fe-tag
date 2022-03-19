@@ -1,0 +1,42 @@
+@import '../../../../../content/scss/vars';
+.title-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 22px 20px;
+  border-bottom: 1px solid rgba(205, 205, 205, 0.5);
+  p {
+    font-weight: 600;
+    font-size: $font20;
+    color: $textColor;
+    margin-bottom: 0;
+  }
+}
+.title-main {
+  width: 100%;
+  padding: 32px 20px;
+}
+table {
+  width: 60%;
+  height: 10vh;
+  .table__top {
+    border-bottom: 1px solid rgba(205, 205, 205, 0.5);
+    td {
+      color: $textColor;
+      font-weight: 600;
+    }
+  }
+  tr {
+    td {
+      color: $nd2TextColor;
+    }
+  }
+}
+.icon-note {
+  width: 14px;
+  height: 14px;
+  fill: black;
+}
+.note {
+  cursor: pointer;
+}

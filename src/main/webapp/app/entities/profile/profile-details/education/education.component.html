@@ -1,0 +1,162 @@
+<div class="title-info">
+    <p jhiTranslate="profile.edu.title"></p>
+    <button
+        [disabled]="checkEnableButtonAdd()"
+        pButton
+        type="button"
+        icon="pi pi-plus"
+        class="p-button-raised icon-add"
+        (click)="addEdu()"
+    ></button>
+</div>
+<p class="show-empty" *ngIf="!isShowTable" jhiTranslate="profile.noInfo"></p>
+<div class="main" *ngIf="isShowTable">
+    <div class="foreign-language">
+        <p-table #table [value]="listEdu" dataKey="id" editMode="row">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th width="20%" class="title-table--left" jhiTranslate="profile.edu.certification"></th>
+                    <th class="title-table--right" jhiTranslate="profile.edu.certificationFrom"></th>
+                    <th width="15%" class="title-table--right" jhiTranslate="profile.edu.from"></th>
+                    <th width="15%" class="title-table--right" jhiTranslate="profile.edu.to"></th>
+                    <th width="15%" class="title-table--right" jhiTranslate="profile.edu.action"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row let-editing="editing" let-ri="rowIndex">
+                <tr class="row-item" [pEditableRow]="row">
+                    <td pEditableColumn>
+                        <p-cellEditor class="cell--disable cell--disable-left" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <p-dropdown
+                                    *ngIf="editing"
+                                    [(ngModel)]="levelSelected"
+                                    optionLabel="label"
+                                    (onChange)="onChangeSelectLevel()"
+                                    [options]="listLevel"
+                                    [placeholder]="'profile.edu.selectLevel' | translate"
+                                >
+                                    <ng-template pTemplate="selectedItem">
+                                        <div>{{ levelSelected.label | translate }}</div>
+                                    </ng-template>
+                                    <ng-template let-level pTemplate="item">
+                                        <div>{{ level.label | translate }}</div>
+                                    </ng-template>
+                                </p-dropdown>
+                                <small class="text-danger" *ngIf="errLevel && editing">{{errLevel|translate}}</small>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                <p>{{ getCertification(row.certification) | translate}}</p>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td pEditableColumn class="title-table--right">
+                        <p-cellEditor class="cell--disable center" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <input *ngIf="editing" pInputText type="text" maxlength="50"
+                                       (keypress)="onKeyPress($event)"
+                                       [placeholder]="'profile.edu.typeSchoolName'|translate"
+                                       [(ngModel)]="certificationFrom"/>
+                                <small class="text-danger"
+                                       *ngIf="errSchoolName && editing" [jhiTranslate]="errSchoolName"
+                                       [translateValues]="{ number: 3 }"></small>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                <p [pTooltip]="row.certificationFrom"> {{ row.certificationFrom }}</p>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td pEditableColumn class="title-table--right ">
+                        <p-cellEditor class="cell--disable center" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <p-dropdown
+                                    *ngIf="editing"
+                                    [(ngModel)]="fromYear"
+                                    [options]="listFromYearSelect"
+                                    (onChange)="onSelectFromYear()"
+                                    [placeholder]="'profile.edu.selectFromYear' | translate"
+                                >
+                                    <ng-template pTemplate="selectedItem">
+                                        <div>{{ fromYear }}</div>
+                                    </ng-template>
+                                    <ng-template let-year pTemplate="item">
+                                        <div>{{ year.label }}</div>
+                                    </ng-template>
+                                </p-dropdown>
+                                <small class="text-danger" *ngIf="errFrom && editing">{{errFrom|translate}}</small>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                <p> {{ row.fromYear}}</p>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td pEditableColumn class="title-table--right ">
+                        <p-cellEditor class="cell--disable center" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <p-dropdown
+                                    *ngIf="editing"
+                                    [(ngModel)]="toYear"
+                                    [options]="listToYearSelect"
+                                    (onChange)="onSelectToYear()"
+                                    [placeholder]="'profile.edu.selectToYear' | translate"
+                                >
+                                    <ng-template pTemplate="selectedItem">
+                                        <div>{{ toYear }}</div>
+                                    </ng-template>
+                                    <ng-template let-year pTemplate="item">
+                                        <div>{{ year.label }}</div>
+                                    </ng-template>
+                                </p-dropdown>
+                                <small class="text-danger" *ngIf="errTo && editing">{{errTo|translate}}</small>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                <p [pTooltip]="row.toYear"> {{ row.toYear}}</p>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td class="action">
+                        <div *ngIf="!editing && !isEditRowItem" (click)="onEditRowItem(row)" pInitEditableRow
+                             class="p-mr-4">
+                            <svg class="icon-edit icon-edit--sm">
+                                <use xlink:href="#ico_edit"></use>
+                            </svg>
+                        </div>
+                        <div *ngIf="!editing && !isEditRowItem" pSaveEditableRow (click)="openModalDelete(row)">
+                            <svg class="icon-edit icon-edit--sm icon-edit--red">
+                                <use xlink:href="#ico_delete"></use>
+                            </svg>
+                        </div>
+                        <button
+                            *ngIf="editing"
+                            class="no-outline"
+                            pButton
+                            type="button"
+                            pSaveEditableRow
+                            icon="pi pi-check"
+                            (click)="updateEdu(row)"
+                            class="p-button-rounded p-button-raised p-button-text p-button-success p-mr-3"
+                        ></button>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            type="button"
+                            pCancelEditableRow
+                            (click)="onRowEditCancel(row)"
+                            icon="pi pi-times"
+                            class="p-button-rounded p-button-raised p-button-text p-button-danger"
+                        ></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<p-dialog [(visible)]="showModalDelete" [header]="'profile.comfirmtitle'|translate" [modal]="true">
+    <div class="body-modal">
+        <p class="title-modal" jhiTranslate="profile.comfirm"></p>
+        <div class="group-button">
+            <button type="button" class="btn btn-confirm" (click)="deleteItem()" jhiTranslate="profile.yes"></button>
+            <button type="button" class="btn btn-cancel" (click)="showModalDelete=false"
+                    jhiTranslate="profile.no"></button>
+        </div>
+    </div>
+</p-dialog>

@@ -1,0 +1,24 @@
+<div class='title-info'>
+    <p jhiTranslate='profile.deals.title'>Thỏa thuận</p> &nbsp;
+</div>
+<div class='title-main'>
+    <p jhiTranslate='profile.deals.content'>Bạn đã đồng ý với các thỏa thuận sau.</p>
+    <table>
+        <tr class='table__top'>
+            <td jhiTranslate='profile.deals.title' >Thỏa thuận</td>
+            <td jhiTranslate='profile.deals.signDate'>Ngày kí</td>
+            <td>File</td>
+        </tr>
+        <tr>
+            <td jhiTranslate='profile.deals.terms'>Điều khoản sử dụng</td>
+            <td>{{profile?.createdDate | date:'dd/MM/yyyy'}}</td>
+            <td class='note' (click)='showModalDialog()'><svg class="icon-note">
+                <use xlink:href='#ico_note'></use>
+            </svg></td>
+        </tr>
+    </table>
+</div>
+<p-dialog [(visible)]='displayModal' header=' ' [modal]='true' [style]="{width: '60vw'}">
+    <div jhiTranslate='register.popup' class='body_modal'>
+    </div>
+</p-dialog>

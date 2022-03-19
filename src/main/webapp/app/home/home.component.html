@@ -1,0 +1,41 @@
+<div class="login">
+    <div class="login-header">
+        <div class='none_div'></div>
+        <div class="login-header_banner">
+            <img src="../../content/images/logoTagon.png" alt="">
+        </div>
+        <div *ngIf="languages && languages.length > 1" ngbDropdown class="d-inline-block">
+            <div jhiTranslate="global.menu.language" id="dropdownBasic1" class="btn_color" ngbDropdownToggle></div>
+            <div class='dropdown-menu' aria-labelledby="dropdownBasic1" ngbDropdownMenu>
+                <button [class.active]="langKey === 'vi'" (click)="changeLanguage('vi')" ngbDropdownItem>
+                    <img  src="../../content/images/vietnamese.svg" />&nbsp;Tiếng Việt
+                </button>
+                <button [class.active]="langKey === 'en'" (click)="changeLanguage('en')" ngbDropdownItem>
+                    <img  src='../../content/images/english.svg' width="25px" />&nbsp;English
+                </button>
+                <button [class.active]="langKey === 'jp'"  (click)="changeLanguage('ko')" ngbDropdownItem>
+                    <img  src='../../content/images/japanese.svg' width="25px" />&nbsp;日本語
+                </button>
+            </div>
+        </div>
+<!--        <div ngbDropdown class="d-inline-block" display="dynamic" *ngIf="languages && languages.length > 1">-->
+<!--            <div class="nav-link dropdown-toggle btn_color" ngbDropdownToggle href="javascript:void(0);" id="languagesnavBarDropdown">-->
+<!--                        <span jhiTranslate="global.menu.language"></span>-->
+<!--            </div>-->
+<!--            <button *ngFor="let language of languages" class="dropdown-menu" ngbDropdownMenu aria-labelledby="languagesnavBarDropdown">-->
+<!--&lt;!&ndash;                    <a><img *ngIf="language=== 'vi'? src='../../content/images/vietnamese.svg': src='../../content/images/english.svg' "  href="javascript:void(0);" (click)="changeLanguage(language);collapseNavbar();">{{ language | findLanguageFromKey }}</a>&ndash;&gt;-->
+<!--                <ul>-->
+<!--                    <li class="dropdown-item" href="javascript:void(0);" (click)="changeLanguage(language);collapseNavbar();">{{ language | findLanguageFromKey }}</li>-->
+<!--                </ul>-->
+<!--            </button>-->
+<!--        </div>-->
+    </div>
+    <div class="login-main">
+        <div class="login-main_img">
+            <img src="../../content/images/login_welcom.svg" alt="">
+        </div>
+        <div class="login-main_right">
+            <jhi-login-modal></jhi-login-modal>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,303 @@
+<div class="taggerProject">
+    <div class="taggerProject__create-project" *ngIf="!profileProcess">
+        <button>
+            <div>
+                <svg class="icon-create-pro">
+                    <use xlink:href="#icon_create_pro"></use>
+                </svg>
+            </div>
+            <span jhiTranslate="project.addProject"></span>
+        </button>
+    </div>
+    <h1 jhiTranslate="project.title"></h1>
+    <div class="taggerProject__edit">
+        <div class="taggerProject__edit__left">
+            <div class="filter-and-sort" *ngIf="!profileProcess">
+                <div class="filter-project d-flex">
+                    <div class="filter-project__left">
+                        <p-multiSelect [filter]="true" [options]="selectProjects" (onChange)="filterProjects($event)"
+                                       placeholder="{{'project.selectProject' | translate}}" editable="true"
+                                       optionLabel="name"
+                                       [(ngModel)]="selectedProjectFilter">
+                            <ng-template pTemplate="selectedItem">
+                                <div>{{selectedProjectFilter?.name | translate}}</div>
+                            </ng-template>
+                            <ng-template let-project pTemplate="item">
+                                <div>{{project.label | translate}}</div>
+                            </ng-template>
+                        </p-multiSelect>
+                    </div>
+                </div>
+                <div class="sort-project d-flex">
+                    <div class="sort-project__right">
+                        <p-dropdown [styleClass]="dropDownOption" [editable]="false" [options]="selectTypeSort"
+                                    (onChange)="filterTypeDetails($event)"
+                                    placeholder="{{'project.sortedBy' | translate}}" editable="true"
+                                    optionLabel="name" [(ngModel)]="sortPriceProjectFilter">
+                            <ng-template pTemplate="selectedItem">
+                                <div>{{sortPriceProjectFilter?.name | translate}}</div>
+                            </ng-template>
+                            <ng-template let-project pTemplate="item">
+                                <div>{{project.label | translate}}</div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                </div>
+            </div>
+            <div class="select-type-project" *ngIf="!profileProcess">
+                <div class="p-grid">
+                    <div class="p-col-12 p-md-6 p-lg-3">
+                        <div (click)="filterTypeProjects($event, 'IMAGE_CLASSIFICATION')"
+                             class="select-type-project-into d-flex" routerLinkActive="active"
+                             [routerLinkActiveOptions]="{ exact: true } ">
+                            <div class="select-type-project-into__icon-left">
+                                <svg class="icon-image-select">
+                                    <use xlink:href="#icon_image_select"></use>
+                                </svg>
+                            </div>
+                            <div class="select-type-project-into__icon-right">
+                                <b jhiTranslate="project.photoProject"></b>
+                                <p>{{lengthProject.length}} <span jhiTranslate="project.projects"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-md-6 p-lg-3">
+                        <div (click)="filterTypeProjects($event, 'VIDEO_CLASSIFICATION')"
+                             class="select-type-project-into d-flex">
+                            <div class="select-type-project-into__icon-left">
+                                <svg class="icon-video-select">
+                                    <use xlink:href="#icon_video_select"></use>
+                                </svg>
+                            </div>
+                            <div class="select-type-project-into__icon-right">
+                                <b jhiTranslate="project.videoProject"></b>
+                                <p>{{lengthProject.length}} <span jhiTranslate="project.projects"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-md-6 p-lg-3">
+                        <div (click)="filterTypeProjects($event, 'TEXT_CLASSIFICATION')"
+                             class="select-type-project-into d-flex" routerLinkActive="active"
+                             [routerLinkActiveOptions]="{ exact: true }">
+                            <div class="select-type-project-into__icon-left">
+                                <svg class="icon-abc-select">
+                                    <use xlink:href="#icon_abc_select"></use>
+                                </svg>
+                            </div>
+                            <div class="select-type-project-into__icon-right">
+                                <b jhiTranslate="project.textProject"></b>
+                                <p>{{lengthProject.length}} <span jhiTranslate="project.projects"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-col-12 p-md-6 p-lg-3">
+                        <div (click)="filterTypeProjects($event, 'AUDIO_CLASSIFICATION')"
+                             class="select-type-project-into d-flex" routerLinkActive="active"
+                             [routerLinkActiveOptions]="{ exact: true }">
+                            <div class="select-type-project-into__icon-left">
+                                <svg class="icon-phone-select">
+                                    <use xlink:href="#icon_phone_select"></use>
+                                </svg>
+                            </div>
+                            <div class="select-type-project-into__icon-right">
+                                <b jhiTranslate="project.audioProject"></b>
+                                <p>{{lengthProject.length}} <span jhiTranslate="project.projects"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-project d-flex" *ngIf="!profileProcess; else noteProject">
+                <div class="page-project-left">
+                    <div class="p-grid">
+                        <div class="p-col-12 p-md-6 p-lg-3" *ngFor="let project of allProjects">
+                            <div class="project-item">
+                                <div class="project-item-details">
+                                    <span class="name-project">{{project?.name}}</span>
+                                    <div class="type-project">
+                                        <div class="type-project__icon">
+                                            <svg class="icon-calendar">
+                                                <use xlink:href="#icon_calendar"></use>
+                                            </svg>
+                                        </div>
+                                        <span>{{project?.deadline | date:'dd/MM/yyyy'}}</span>
+                                    </div>
+                                    <div class="type-project">
+                                        <div class="type-project__icon">
+                                            <svg class="icon-user-pro">
+                                                <use xlink:href="#icon_user_pro"></use>
+                                            </svg>
+                                        </div>
+                                        <span>{{project?.nWorkers !== null ? project?.nWorkers : "N/A"}}</span>
+                                    </div>
+                                    <div class="type-project">
+                                        <div class="type-project__icon">
+                                            <svg class="icon-money-pro">
+                                                <use xlink:href="#icon_money_pro"></use>
+                                            </svg>
+                                        </div>
+                                        <span>{{project?.price}}</span>
+                                    </div>
+                                </div>
+                                <div class="project-item-details-right">
+                                    <div class="into-card">
+                                        <div *ngIf="project?.status === 'DONE'">
+                                            <img src="../../../content/images/closeProject.png"/>
+                                        </div>
+                                        <div *ngIf="project?.status === 'OPEN'">
+                                            <img src="../../../content/images/openProject.png"/>
+                                        </div>
+                                        <div *ngIf="project?.status === 'NEW'">
+                                            <img src="../../../content/images/newProject.png"/>
+                                        </div>
+                                        <div *ngIf="project?.status === 'DOING'">
+                                            <circle-progress
+                                                [percent]="85"
+                                                [radius]="30"
+                                                [space]="-4"
+                                                [outerStrokeWidth]="4"
+                                                [innerStrokeWidth]="4"
+                                                [showInnerStroke]="true"
+                                                [outerStrokeColor]="'#63D561'"
+                                                [innerStrokeColor]="'#e7e8ea'"
+                                                [animation]="true"
+                                                [showSubtitle]="false"
+                                                [animationDuration]="300"
+                                                [showTitle]="true"
+                                            ></circle-progress>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="page-project-left__edit-paginator">
+                        <p-paginator [first]="0"
+                                     [rows]="10"
+                                     [totalRecords]="totalRecords"
+                                     (onPageChange)="paginate($event)">
+                        </p-paginator>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="page-project-right" *ngIf="!profileProcess">
+            <div class="page-project-right__top">
+                <h4 jhiTranslate="project.projectStatus"></h4>
+                <div class="page-project-right__top__edit-chart">
+                    <highcharts-chart
+                        #myChart
+                        [Highcharts]="Highcharts"
+                        [options]="chartOptions"
+                        style="width: 100%; height: 230px; display: block;"
+                    ></highcharts-chart>
+                </div>
+            </div>
+            <br/>
+            <div class="page-project-right__bottom">
+                <h4 jhiTranslate="project.anoHistory"></h4>
+                <div class="page-project-right__bottom__details d-flex">
+                    <div class="avatar-anotator">
+                        <img src="../../../content/images/avatar/avatar-worker.png"/>
+                    </div>
+                    <div class="info-detais-anotator">
+                        <b>Hiep tran</b>
+                        <p>10 ngay khong tham gia vao du an</p>
+                    </div>
+                    <a jhiTranslate="project.contact"></a>
+                </div>
+                <div class="page-project-right__bottom__details d-flex">
+                    <div class="avatar-anotator">
+                        <img src="../../../content/images/avatar/avatar-worker.png"/>
+                    </div>
+                    <div class="info-detais-anotator">
+                        <b>Hiep tran</b>
+                        <p>10 ngay khong tham gia vao du an</p>
+                    </div>
+                    <a jhiTranslate="project.contact"></a>
+                </div>
+                <div class="page-project-right__bottom__details d-flex">
+                    <div class="avatar-anotator">
+                        <img src="../../../content/images/avatar/avatar-worker.png"/>
+                    </div>
+                    <div class="info-detais-anotator">
+                        <b>Hiep tran</b>
+                        <p>10 ngay khong tham gia vao du an</p>
+                    </div>
+                    <a jhiTranslate="project.contact"></a>
+                </div>
+                <div class="page-project-right__bottom__details d-flex">
+                    <div class="avatar-anotator">
+                        <img src="../../../content/images/avatar/avatar-worker.png"/>
+                    </div>
+                    <div class="info-detais-anotator">
+                        <b>Hiep tran</b>
+                        <p>10 ngay khong tham gia vao du an</p>
+                    </div>
+                    <a jhiTranslate="project.contact"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #noteProject>
+        <div class="page-note-project">
+            <h2 jhiTranslate="project.annotator"></h2>
+            <div class="p-grid edit-page">
+                <div class="p-col-4">
+                    <div class="info-worker">
+                        <div class="info-worker-info">
+                            <div class="avatar-worker">
+                                <img
+                                    src="{{user?.profilePic === null ? 'content/images/icon_default.jpg' : user?.profilePic}}">
+                            </div>
+                            <div class="name-worker">{{user?.firstName}}{{user?.lastName}}</div>
+                            <div class="rate-leve">
+                                <span>{{user?.rating}}</span>
+                                <svg class="icon-star">
+                                    <use xlink:href='#ico_star'></use>
+                                </svg>
+                            </div>
+                            <div class="sdt-worker">
+                                <table>
+                                    <tr>
+                                        <td><b jhiTranslate="project.phone"></b></td>
+                                        <td><span>{{user?.phone}}</span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="time-do-work">
+                                <table>
+                                    <tr>
+                                        <td><b jhiTranslate="project.workingFromDays"></b></td>
+                                        <td><span>{{user?.createdDate | date:'dd/MM/yyyy'}}</span></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="info-worker-details">
+<!--                            <a jhiTranslate="project.details"></a>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="p-col-8">
+                    <div class="check-info-worker">
+                        <div class="edit-check-text">
+                            <h3 jhiTranslate="project.welcomeNote"></h3>
+                        </div>
+                        <div class="edit-check-link">
+                            <a routerLink="/profile/detail/info"
+                               jhiTranslate="project.profileInformation">
+                            </a>
+                            <svg>
+                                <use xlink:href="#ico_link_profile"></use>
+                            </svg>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</div>

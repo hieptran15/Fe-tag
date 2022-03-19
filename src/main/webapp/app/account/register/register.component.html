@@ -1,0 +1,132 @@
+<div class='row register'>
+    <div class='col-md-4 col-sm-4 register__left'>
+        <div class='register__left-grey'></div>
+        <div class='register__left-gray'></div>
+        <div class='register__left_opacity'><img class='register__left_arrow'
+                                                 src='../../../content/images/register_arrow.svg' alt=''>
+        </div>
+        <div jhiTranslate='register.titlemain' class='register__left_text'> we will send you a verification email to
+            complete your account
+            registration.
+        </div>
+        <div class='logo_banner'>
+            <img class='register__left_imgLogo' src='../../../content/images/logoTagon.png' alt=''>
+        </div>
+    </div>
+    <div class='col-md-8 col-sm-8 col-12 register__right'>
+        <div class='register__right_form col-lg-5 col-md-8 '>
+            <form name='form' role='form' maxlength='100' (ngSubmit)='register()' [formGroup]='registerForm'>
+                <div class='title_form'>
+                    <label jhiTranslate='register.title'>Registration</label>
+                </div>
+                <div class='form-group'>
+                    <label class='form-control-label' for='email' jhiTranslate='global.form.email.label'>Email</label>
+                    <input autofocus type='text' class='form-control' id='email' maxlength='100' name='email'
+                           placeholder="{{ 'global.form.email.placeholder' | translate }}" formControlName='email'>
+                    <div
+                        *ngIf="registerForm.get('email')!.invalid && (registerForm.get('email')!.dirty || registerForm.get('email')!.touched)">
+                        <small class='form-text text-danger' *ngIf="registerForm.get('email')?.errors?.required"
+                               jhiTranslate='global.messages.validate.email.required'>
+                            Your email is required.
+                        </small>
+
+                        <small class='form-text text-danger' *ngIf="registerForm.get('email')?.errors?.invalid"
+                               jhiTranslate='global.messages.validate.email.invalid'>
+                            Your email is invalid.
+                        </small>
+                        <small class='form-text text-danger' *ngIf="registerForm.get('email')?.errors?.pattern"
+                               jhiTranslate='global.messages.validate.email.field@'>
+                            Email format is not correct.
+                        </small>
+                        <small class='form-text text-danger' *ngIf="registerForm.get('email')?.errors?.maxlength"
+                               jhiTranslate='global.messages.validate.email.maxlength'>
+                            Your email cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class='form-group'>
+                    <label class='form-control-label' for='password' jhiTranslate='global.form.password.label'>New
+                        password</label>
+                    <input type='password' class='form-control' id='password' name='password'
+                           placeholder="{{ 'global.form.newpassword.placeholder' | translate }}"
+                           formControlName='password'>
+
+                    <div
+                        *ngIf="registerForm.get('password')!.invalid && (registerForm.get('password')!.dirty || registerForm.get('password')!.touched)">
+                        <small class='form-text text-danger' *ngIf="registerForm.get('password')?.errors?.required"
+                               jhiTranslate='global.messages.validate.newpassword.required'>
+                            Your password is required.
+                        </small>
+
+                        <small class='form-text text-danger' *ngIf="registerForm.get('password')?.errors?.minlength"
+                               jhiTranslate='global.messages.validate.newpassword.minlength'>
+                            Your password is required to be at least 4 characters.
+                        </small>
+
+                        <small class='form-text text-danger' *ngIf="registerForm.get('password')?.errors?.maxlength"
+                               jhiTranslate='global.messages.validate.newpassword.maxlength'>
+                            Your password cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='form-control-label' jhiTranslate='security.form.confirm'>Xác nhận *</label>
+                    <input formControlName='rePassword' name='rePassword' type='password' class='form-control no-border'
+                           placeholder="{{'security.form.confirm.placeholder' | translate}}" />
+                    <div
+                        *ngIf="registerForm.get('rePassword')!.errors&&registerForm.get('rePassword')!.invalid && (registerForm.get('rePassword')!.dirty || registerForm.get('rePassword')!.touched)"
+                        class='errorMessage'>
+                        <small jhiTranslate='security.form.validpass' class='validate_input text-danger'
+                               *ngIf="registerForm.get('rePassword')?.errors?.required">Xác nhận mật khẩu không được để
+                            trống
+                        </small>
+                        <small jhiTranslate='security.form.match' class='validate_input text-danger'
+                               *ngIf="registerForm.get('rePassword')?.errors?.confirmPasswordValidator"> Mật khẩu không
+                            trùng nhau
+                        </small>
+                    </div>
+                    <div class='form_check d-flex'>
+                        <label>
+                            <input (click)='showModalDialog()' name='isCheck' formControlName='isCheck' type='checkbox'>
+                            <span jhiTranslate='register.form.agree'>
+                            I have read and accepted</span>
+                            <button type='button' (click)='showModalDialog1()' class='form_check__service'
+                                    jhiTranslate='register.form.service'>Service agreement
+                            </button>
+                        </label>
+
+                    </div>
+                    <div class='security_form'>
+                        <label>
+                        <span jhiTranslate='register.form.security'>
+                            We protect your personal data. Read more about
+                        </span>
+                            <span class='security_form-privacy' jhiTranslate='register.form.privacy'>Data Privacy Notice
+                        </span>
+                        </label>
+                    </div>
+                    <button [disabled]='registerForm.invalid' type='submit' class='btn edit-register'
+                            jhiTranslate='register.form.button'>Register
+                    </button>
+                    <div class='button__login'>
+                    <span jhiTranslate='global.messages.info.register.yesaccount'>Do you already have an account
+                        ?</span> <a jhiTranslate='login.form.button' routerLink='' routerLinkActive='active'>Sign in</a>
+                    </div>
+<!--                    <div class='form_footer'>-->
+<!--                        <div (click)='showModalDialog1()' jhiTranslate='login.policy'>Policy</div>-->
+<!--&lt;!&ndash;                        <div jhiTranslate='login.invitefriend' class='form_footer_invite'>Invited friends</div>&ndash;&gt;-->
+<!--                    </div>-->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<p-dialog [(visible)]='displayModal' header=' ' [modal]='true' [style]="{width: '60vw'}">
+    <div jhiTranslate='register.popup' class='body_modal'>
+    </div>
+    <div class='group_button'>
+        <button jhiTranslate='register.btn' type='button' class='btn btn_confirm' (click)='tickCheckbox()'>Đồng ý
+        </button>
+    </div>
+</p-dialog>

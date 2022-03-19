@@ -1,0 +1,161 @@
+<div class="title-info">
+    <p jhiTranslate="profile.exp.title"></p>
+    <button
+        [disabled]="checkEnableButtonAdd()"
+        pButton
+        type="button"
+        icon="pi pi-plus"
+        class="p-button-raised icon-add"
+        (click)="addExp()"
+    ></button>
+</div>
+<p class="show-empty" *ngIf="!isShowTable" jhiTranslate="profile.noInfo"></p>
+<div class="main" *ngIf="isShowTable">
+    <div class="foreign-language">
+        <p-table #table [value]="listExp" dataKey="id" editMode="row">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="title-table--left" jhiTranslate="profile.exp.companyName"></th>
+                    <th class="title-table--right" jhiTranslate="profile.exp.website"></th>
+                    <th class="title-table--right" jhiTranslate="profile.exp.jobName"></th>
+                    <th class="title-table--right" jhiTranslate="profile.exp.from"></th>
+                    <th class="title-table--right" jhiTranslate="profile.exp.to"></th>
+                    <th class="title-table--right" jhiTranslate="profile.exp.action"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row let-editing="editing" let-ri="rowIndex">
+                <tr class="row-item" [pEditableRow]="row">
+                    <td pEditableColumn>
+                        <p-cellEditor class="cell--disable cell--disable-left" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <input *ngIf="editing"  pInputText type="text" maxlength="50" (keydown)="onKeyDownCompany()" (keypress)="onKeyPress($event)"
+                                       [placeholder]="'profile.exp.typeCompany'|translate"
+                                       [(ngModel)]="company"/>
+                                <small class="text-danger"
+                                       *ngIf="errCompany && editing" [jhiTranslate]="errCompany" [translateValues]="{ number: 3 }"></small>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                <p [pTooltip]="row.company">{{ row.company }}</p>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td pEditableColumn class="title-table--right center">
+                        <p-cellEditor class="cell--disable" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <input *ngIf="editing" pInputText type="text" maxlength="50"
+                                       [placeholder]="'profile.exp.typeWebsite'|translate"
+                                       (keydown.space)="onPressSpace($event)"
+                                       [(ngModel)]="website"/>
+                                <small class="text-danger"
+                                       *ngIf="errWebsite && editing">{{errWebsite|translate}}</small>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                <p [pTooltip]="row.website">{{ row.website }}</p>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td pEditableColumn class="title-table--right center">
+                        <p-cellEditor class="cell--disable" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <input *ngIf="editing" pInputText type="text" maxlength="50" (keypress)="onKeyPress($event)"
+                                       [placeholder]="'profile.exp.typeJob'|translate" [(ngModel)]="jobName"/>
+                                <small class="text-danger"
+                                       *ngIf="errJobName && editing">{{errJobName|translate}}</small>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                <p [pTooltip]="row.jobName">{{ row.jobName }}</p>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td pEditableColumn class="title-table--right center">
+                        <p-cellEditor class="cell--disable" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <p-calendar
+                                    *ngIf="editing"
+                                    [(ngModel)]="startDateSelected"
+                                    datetime-model="format"
+                                    view="month"
+                                    dateFormat="mm/yy"
+                                    [yearNavigator]="true"
+                                    yearRange="2000:2030"
+                                    [readonlyInput]="true"
+                                    [placeholder]="'profile.exp.selectStartDate'|translate"
+                                    [maxDate]="endDateSelected"
+                                >
+                                </p-calendar>
+                                <small class="text-danger" *ngIf="errFrom && editing">{{errFrom|translate}}</small>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                <p>{{ row.startDate | date:'MM/yyyy' }}</p>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td pEditableColumn class="title-table--right center">
+                        <p-cellEditor class="cell--disable" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <p-calendar
+                                    *ngIf="editing"
+                                    [(ngModel)]="endDateSelected"
+                                    datetime-model="format"
+                                    view="month"
+                                    dateFormat="mm/yy"
+                                    [yearNavigator]="true"
+                                    yearRange="2000:2030"
+                                    [readonlyInput]="true"
+                                    [placeholder]="'profile.exp.selectEndDate'|translate"
+                                    [minDate]="startDateSelected"
+                                ></p-calendar>
+                                <small class="text-danger" *ngIf="errTo && editing">{{errTo|translate}}</small>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                <p>{{ row.endDate | date: 'MM/yyyy' }}</p>
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td class="action">
+                        <div *ngIf="!editing && !isEditRowItem" (click)="onEditRowItem(row)" pInitEditableRow
+                             class="p-mr-4">
+                            <svg class="icon-edit icon-edit--sm">
+                                <use xlink:href="#ico_edit"></use>
+                            </svg>
+                        </div>
+                        <div *ngIf="!editing && !isEditRowItem" pSaveEditableRow (click)="openModalDelete(row)">
+                            <svg class="icon-edit icon-edit--sm icon-edit--red">
+                                <use xlink:href="#ico_delete"></use>
+                            </svg>
+                        </div>
+                        <button
+                            *ngIf="editing"
+                            class="no-outline"
+                            pButton
+                            type="button"
+                            pSaveEditableRow
+                            icon="pi pi-check"
+                            (click)="updateExp(row)"
+                            class="p-button-rounded p-button-raised p-button-text p-button-success p-mr-3"
+                        ></button>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            type="button"
+                            pCancelEditableRow
+                            (click)="onRowEditCancel(row)"
+                            icon="pi pi-times"
+                            class="p-button-rounded p-button-raised p-button-text p-button-danger"
+                        ></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<p-dialog [(visible)]="showModalDelete" [header]="'profile.comfirmtitle'|translate" [modal]="true">
+    <div class="body-modal">
+        <p class="title-modal" jhiTranslate="profile.comfirm"></p>
+        <div class="group-button">
+            <button type="button" class="btn btn-confirm" (click)="deleteItem()" jhiTranslate="profile.yes"></button>
+            <button type="button" class="btn btn-cancel" (click)="showModalDelete=false"
+                    jhiTranslate="profile.no"></button>
+        </div>
+    </div>
+</p-dialog>

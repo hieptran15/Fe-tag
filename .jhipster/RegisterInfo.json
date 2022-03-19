@@ -1,0 +1,69 @@
+{
+  "name": "RegisterInfo",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "secondaryImages",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "role",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "mobile",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "personalId",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "personalIdImage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "drinkLevel",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "study",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "lang",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "createdAt",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "updatedAt",
+      "fieldType": "Instant"
+    }
+  ],
+  "relationships": [],
+  "changelogDate": "20201006075732",
+  "entityTableName": "register_info",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

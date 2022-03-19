@@ -1,0 +1,49 @@
+{
+  "qc": {
+    "title": "Frequently asked questions",
+    "qs1": {
+      "ask1": "1. What is the Tagon system used for?",
+      "answer1": "Look for job labeling for candidates, public projects for companies that need to label data"
+    },
+    "qs2": {
+        "ask2": "2. What is Trusted Trusted?",
+      "answer2": "The number of points that users earn through using the TagOn system based on activities, work, time to complete KPI"
+    },
+    "qs3": {
+      "ask3": "3. What is the amount allowed to withdraw? How to withdraw money? ",
+      "answer3": "At least 100,000 VND withdrawn via bank card of the label holder"
+    },
+    "qs4": {
+      "ask4": "4. What are the labeler requirements?",
+      "answer4": "Hard-working, careful, responsible, have free time during the day (4-6 hours / day) to meet job requirements and not be color blind, know how to use computers, prioritize knowledge about the work information technology, with internet-connected computers or portable devices"
+    },
+    "qs5": {
+      "ask5": "5. Quality requirements are how to guarantee? ",
+      "answer5": "Ensuring the right label labeling, the working time meeting the requirements of the job, ensuring the correct labeling of available data."
+    },
+    "qs6": {
+      "ask6": "6. How is the price calculated?",
+      "answer6": "The price is calculated according to the performance achieved. Each project has a different price, when joining a project depends on the quantity of jobs assigned, the quality of the people working on and the level of the labeled dataset."
+    },
+    "qs7": {
+      "ask7": "7. How to label?",
+      "answer7": "Depending on the requirements of the project you participate in, each project will have its own requirements, when participating in the project will have a detailed instruction file."
+    },
+    "qs8": {
+      "ask8": "8. What is data tagging?",
+      "answer8": "Data tagging is the process of attaching meaning fields to various types of digital data such as audio, text, image, video and more."
+    },
+    "qs9": {
+      "ask9": "9. What is the purpose of assigning data labels?",
+      "answer9": "In machine learning, if the data has been labeled, it means that the data is highlighted or annotated, to show the target, which is also the answer you want your machine learning model to predict. In general, data labeling can refer to tasks including data tagging, annotating, classifying, moderating, copying, or processing. Whether. Data annotation and data labeling are often used interchangeably, although they can be used differently based on specific industries or use cases. <br> Data labeled highlight data features - either attributes, characteristics or classifications - that can be analyzed for patterns that help in goal prediction. For example, in computer vision for autonomous vehicles, a data labeler can use frame-by-frame video labeling tools to indicate the location of street signs, pedestrians or vehicles other."
+    },
+    "qs10": {
+      "ask10": "10. If you have a problem or question, how to contact?",
+      "answer10": "If you have any questions, you can contact TagOn support. This department is always ready to assist with all your questions. TagOn always has a team of staff ready to support 24/7 to answer and handle problems that users encounter in order to perfect the system in the most optimal way."
+    },
+    "qs11": {
+      "ask11": "11.  \nCan I sign up for multiple TagOn accounts?",
+      "answer11": "\nAccording to the provisions of TagOn, each email account you are only allowed to register one account TagOn."
+    }
+  }
+}

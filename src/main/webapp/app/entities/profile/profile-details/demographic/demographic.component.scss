@@ -1,0 +1,179 @@
+@import './src/main/webapp/content/scss/vars';
+
+h4 {
+  font-weight: 600;
+  font-size: 20px;
+}
+h5 {
+  margin-top: 2%;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 3%;
+}
+.card_title {
+  width: 100%;
+  border-bottom: 0.5px solid #a09f9f;
+}
+.card_body {
+  width: 100%;
+  border-bottom: 0.5px solid #a09f9f;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  h4 {
+    margin-bottom: 0;
+  }
+}
+.card_bottom {
+  width: 100%;
+  padding-top: 20px;
+  h4 {
+    margin-bottom: 0;
+    font-weight: 500;
+  }
+}
+.text_name {
+  font-weight: 600;
+}
+.btn_edit {
+  background-color: $color-main;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.row_button {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+.btn_save {
+  width: 100px;
+  background-color: $color-main;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.btn_cancel {
+  margin-left: 50px;
+  width: 100px;
+  background-color: #c4c4c4;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.row_contact {
+  display: flex;
+  justify-content: space-between;
+  .title {
+    font-weight: 700;
+    color: #021b1e;
+    font-size: 24px;
+  }
+}
+.row_location {
+  width: 100%;
+  table {
+    width: 40%;
+    tr {
+      td {
+        padding: 8px 0;
+      }
+      .sex {
+        font-weight: 700;
+        margin-right: 10%;
+      }
+    }
+  }
+}
+.location_left {
+  width: 20%;
+  margin-top: 4%;
+}
+.location_right {
+  width: 80%;
+  margin-top: 4%;
+  .sex {
+    height: 24px;
+  }
+}
+.form_edit {
+  width: 60%;
+  .ng-invalid {
+    border-left: 1px solid #ced4da;
+  }
+}
+.body_modal {
+  padding: 0 40px 40px 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.btn_cancel {
+  background-color: #c4c4c4;
+  border-color: #c4c4c4;
+  width: 100px;
+}
+.btn_send {
+  width: 100px;
+  margin-right: 50px;
+}
+.btn_confirm {
+  width: 100px;
+  background-color: $color-main;
+  color: white;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.group_button {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+.title_modal {
+  font-weight: 500;
+  font-size: 18px;
+  color: #021b1e;
+}
+button:focus {
+  outline: 0;
+}
+.modal-header {
+  border-bottom: none;
+}
+.errorMessage {
+  color: red;
+}
+
+.space_name {
+  height: 5px;
+}
+label {
+  font-weight: 600;
+}
+.main_text {
+  width: 70%;
+  font-weight: 400;
+  margin-top: 2%;
+}
+.form-group {
+  input {
+    background: #f3f3f4;
+    border-radius: 8px;
+  }
+  label {
+    font-weight: 600;
+  }
+  select {
+    background: #f3f3f4;
+    border-radius: 8px;
+  }
+}
+.check_box_sex {
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  label {
+    margin: 0;
+  }
+  input {
+    width: 10%;
+    height: 100%;
+  }
+}

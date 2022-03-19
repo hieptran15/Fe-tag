@@ -1,0 +1,9 @@
+<div class="wr-breadcrumb">
+    <a [routerLink]="'/'" class="home-icon">{{'path.home' | translate}}</a>
+    <ng-container *ngFor="let item of breadcrumb; let index = index">
+        <a *ngIf="index < breadcrumb.length - 1" [routerLink]="item.url"> <em class="pi pi-angle-right"></em>
+            {{item.name | translate}}
+        </a>
+        <p class="d-inline" *ngIf="index == breadcrumb.length - 1"><em class="pi pi-angle-right"></em> {{item.name | translate}}</p>
+    </ng-container>
+</div>

@@ -1,0 +1,66 @@
+<div class='main-profile'>
+    <p jhiTranslate='profile.title' class='title-profile'>Profile</p>
+    <div class='main-profile__content'>
+        <div class='content-left'>
+            <div class='card-avt'>
+                <div (click)='showModalAvatar = true' class='ico-camera cursor'>
+                    <i class='pi pi-camera font-size'></i>
+                </div>
+                <div (click)='showModalAvatar = true' class='background-camera cursor'>
+                </div>
+                <div
+                    [ngStyle]="{'background-image': !profile?.profilePic ? 'url(content/images/icon_default.jpg)' : 'url('+ profile?.profilePic+')' }"
+                    class='avt-profile'
+                >
+                </div>
+            </div>
+            <div class='list-info'>
+                <p class='star'> {{profile?.rating}} &nbsp;
+                    <svg class='icon-star'>
+                        <use xlink:href='#ico_star'></use>
+                    </svg>
+
+                </p>
+                <div *ngFor='let item of listItems; let router'>
+                    <a routerLink='{{item.routerLink}}' routerLinkActive='active'
+                       [routerLinkActiveOptions]='{ exact: true }'
+                       class='tab-left cursor'
+                    >
+                        <div style='width: 100%' class='d-flex'>
+                            <div class='active_button'>
+                                <span>{{'profile.' + (item.section) | translate}}</span>
+                                <svg class='icon-tick' *ngIf='item.completed'>
+                                    <use xlink:href='#ico_tick'></use>
+                                </svg>
+                                <svg class='icon-cancel' *ngIf='!item.completed'>
+                                    <use xlink:href='#ico_cancel'></use>
+                                </svg>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+        <div class='content-right'>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<p-dialog [(visible)]='showModalAvatar' [header]="'profile.changAvt'|translate" [modal]='true'>
+    <div class='body-modal'>
+        <div class='form-group row-select'>
+            <img class='avt-preview' [src]="!imgUrl ? 'content/images/icon_default.jpg' : imgUrl"/>
+            <input type='file' class='input-file' accept='.png, .jpg, .jpeg' #fileInput (change)='uploadFile($event)'/>
+            <button type='button' class='btn btn-confirm' (click)='fileInput.click()'>Tải lên</button>
+        </div>
+        <div class='group-button'>
+            <button type='button' class='btn btn-confirm' (click)='confirmAvatar()' jhiTranslate='profile.update'>
+            </button>
+            <button type='button' class='btn btn-cancel' (click)='showModalAvatar = false'
+                    jhiTranslate='profile.cancel'>
+            </button>
+        </div>
+    </div>
+</p-dialog>

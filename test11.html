@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="button()">doi bien</button>
+    <button onclick="filterdown()">sắp xếp theo count giảm dần</button>
+    <script>
+      var a = 1;
+      var c = 2;
+      console.log(a);
+      console.log(c);
+      function button() {
+        const bienphu = a;
+        a = c;
+        c = bienphu;
+        console.log("a:", a);
+        console.log("c:", c);
+      }
+
+      var before = [1, 2, 1, 3, 1, 1, 3, 4, 4, 4];
+      console.log('data goc : ',before);
+      var bienphu1 = "concac";
+      function filterdown() {
+        //dem so lan  xuat hien
+        const locmanglan1 = [];
+        let bienphu1 = "concac";
+        for (let i = 0; i < before.length; i++) {
+          bienphu1 = before[i];
+          for (let j = 0; j < before.length; j++) {
+            if (before[j] === bienphu1 && before[j] !== "concac") {
+              locmanglan1.push(before[j]);
+              before[j] = "concac";
+            }
+          }
+        }
+
+        // locmanglan2
+        locmang3 = [];
+        for (let i = 0; i < locmanglan1.length; i++) {
+          if (locmanglan1[i + 1] !== locmanglan1[i]) {
+            locmang3.push(locmanglan1[i]);
+          }
+        }
+
+        console.log("loc mang3 : ", locmang3);
+
+        //tim phan tu khac nhau
+        for (let i = 0; i < before.length; i++) {
+          bienphu1 = before[i];
+          for (let j = 0; j < before.length; j++) {
+            if (before[j] === bienphu1 && before[j] !== "concac") {
+              locmanglan1.push(before[j]);
+              before[j] = "concac";
+            }
+          }
+        }
+
+        //đếm số lượng
+        const locmanglan2 = [];
+        let bienphu2 = locmanglan1[0];
+        for (let k = 0; k < locmang3.length; k++) {
+          bienphu2 = locmang3[k];
+          count = 0;
+          for (let l = 0; l < locmanglan1.length; l++) {
+            if (locmanglan1[l] === bienphu2) {
+              count++;
+            }
+          }
+          locmanglan2.push({ value: bienphu2, count: count });
+        }
+
+        // lấy các giá trị cần đổ theo số lượng
+        let max_value = 0;
+        console.log(locmanglan2.length);
+        for (let i = 0; i < locmanglan2.length; i++) {
+          for (let j = 0; j < locmanglan2.length; j++) {
+            if (locmanglan2[j].count <= locmanglan2[i].count) {
+              const data = locmanglan2[j];
+              locmanglan2[j] = locmanglan2[i];
+              locmanglan2[i] = data;
+            }
+          }
+        }
+
+        //do data theo list
+        const data_final = [];
+        for (let i = 0; i < locmanglan2.length; i++) {
+          for (let j = 0; j < locmanglan1.length; j++) {
+            if (locmanglan1[j]   === locmanglan2[i].value) {
+              data_final.push(locmanglan1[j]);
+            }
+          }
+        }
+
+        console.log(locmanglan2);
+        console.log(locmanglan1);
+        console.log(data_final);
+      }
+    </script>
+  </body>
+</html>

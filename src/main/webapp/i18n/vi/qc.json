@@ -1,0 +1,49 @@
+{
+  "qc": {
+    "title": "Câu hỏi thường gặp ",
+    "qs1": {
+      "ask1": "1. Hệ thống Tagon dùng để làm gì? ",
+      "answer1": "Tìm kiếm công việc gán nhãn đối với ứng viên, public dự án đối với các công ty đang cần gán nhãn dữ liệu"
+    },
+    "qs2": {
+      "ask2": "2. Điểm tin cậy là gì?",
+      "answer2": "Điểm tin cậy là số điểm đảm bảo chất lượng công việc của người gán nhãn. Mức điểm ban đầu của mỗi người gán nhãn là 100 điểm và số điểm max = 100. Trong quá trình gán nhãn dữ liệu nếu người gán nhãn đạt yêu cầu về chất lượng trong một mức nhất định số điểm sẽ được giữ nguyên, ngược lại nếu chất lượng gán nhãn chưa được tốt sẽ bị trừ phụ thuộc vào chất lượng của kết quả gán nhãn."
+    },
+    "qs3": {
+      "ask3": "3. Số tiền được phép rút là bao nhiêu? Rút tiền như thế nào? ",
+      "answer3": "Trong TagOn số tiền mà người gán nhãn được phép rút là từ 100000 vnd trở lên và được chuyển qua tài khoản ngân hàng mà người gán nhãn đã cung cấp"
+    },
+    "qs4": {
+      "ask4": "4. Yêu cầu đối với người gán nhãn là gì? ",
+      "answer4": "Chăm chỉ, cẩn thận, có tinh thần trách nhiệm, có thời gian rảnh trong ngày ( 4-6 tiếng/ ngày ) để đáp ứng yêu cầu công việc và không bị mù màu, biết sử dụng máy tính, ưu tiên biết về công nghệ thông tin, có máy tính kết nối internet hoặc các thiết bị cầm tay"
+    },
+    "qs5": {
+      "ask5": "5. Yêu cầu về chất lượng như thế nào là đảm bảo? ",
+      "answer5": "Đảm bảo về thời gian hoàn thành, đảm bảo kết quả gán nhãn. Từ đó tính được độ chính xác từ kết quả của bạn, độ chính xác càng cao số tiền bạn nhận được càng nhiều và ngược lại."
+    },
+    "qs6": {
+      "ask6": "6. Giá cả được tính như thế nào?",
+      "answer6": "Giá được tính theo hiệu quả công việc đạt được. Mỗi dự án có mức giá khác nhau, khi tham gia dự án tùy vào số lượng được giao việc, chất lượng của người làm việc và mức độ của bộ dữ liệu gán nhãn. Số tiền người gán nhãn nhận được dựa theo quy tắc sau:\n Nếu tỷ lệ đúng trên 90% --> full tiền\n Đúng từ 85 - < 90 --> 90% tiền\n Đúng từ 80 - < 85 --> 80% tiền\nĐúng từ 75 - < 80 --> 50% tiền\nNhỏ hơn 75 --> không có tiền\n"
+    },
+    "qs7": {
+      "ask7": "7. Cách gán nhãn như thế nào?",
+      "answer7": "Tùy thuộc vào yêu cầu dự án bạn tham gia, mỗi dự án sẽ có yêu cầu riêng, khi được tham gia làm dự án sẽ có file hướng dẫn chi tiết, nếu vẫn chưa nắm rõ cách làm bạn có thể liên hệ với bộ phận hỗ trợ của TagOn qua số điện thoại: 0123456789\n"
+    },
+    "qs8": {
+      "ask8": "8. Gán nhãn dữ liệu là gì?",
+      "answer8": "Gán nhãn dữ liệu là quá trình gắn trường ý nghĩa cho các loại dữ liệu kỹ thuật số khác nhau như tệp âm thanh, văn bản, hình ảnh, video và nhiều nữa. Nói chung, ghi nhãn dữ liệu có thể đề cập đến các tác vụ bao gồm gắn thẻ dữ liệu, chú thích, phân loại, kiểm duyệt, sao chép hoặc xử lý.\nDữ liệu được gắn nhãn làm nổi bật các tính năng dữ liệu – hoặc các thuộc tính, đặc điểm hoặc phân loại – có thể được phân tích cho các mẫu giúp dự đoán mục tiêu. Ví dụ, trong thị giác máy tính cho xe tự hành, một người ghi nhãn dữ liệu có thể sử dụng các công cụ ghi nhãn video theo từng khung để chỉ ra vị trí của biển báo đường phố, người đi bộ hoặc các phương tiện khác.\n"
+    },
+    "qs9": {
+      "ask9": "9. Gán nhãn dữ liệu để làm gì?",
+      "answer9": "Dữ liệu đã được gán nhãn nghĩa là dữ liệu được đánh dấu hoặc chú thích, để hiển thị mục tiêu. Mục đích muốn mô hình học máy dự đoán. \n"
+    },
+    "qs10": {
+      "ask10": "10. Nếu gặp vấn đề, thắc mắc thì liên hệ như thế nào?",
+      "answer10": "Nếu gặp thắc mắc có thể liên hệ với bộ phận hỗ trợ của TagOn. Bộ phận \nnày luôn có người sẵn sàng hỗ trợ mọi thắc mắc của bạn. TagOn luôn có 1 đội ngũ nhân viên luôn sẵn sàng hỗ trợ 24/7 để giải đáp cũng như xử lý các vấn đề mà người dùng gặp phải nhằm hoàn thiện hệ thống một cách tối ưu nhất. Để được giải đáp chi tiết liên hệ số điện thoại: 0123456789\n"
+    },
+    "qs11": {
+      "ask11": "11.  Tôi có thể đăng ký nhiều tài khoản TagOn không?",
+      "answer11": "Theo quy định của TagOn, mỗi tài khoản email bạn chỉ được phép đăng ký một tài khoản TagOn."
+    }
+  }
+}

@@ -1,0 +1,164 @@
+<div class="title-info">
+    <p jhiTranslate="profile.language.title"></p>
+    &nbsp;
+</div>
+<div class="main p-d-flex p-flex-column">
+    <div class="main-language">
+        <div class="main-language__title">
+            <p jhiTranslate="profile.language.myLang"></p>
+            <div *ngIf="!isEditMain && !isEditRowItem" (click)="openEditMainLang()" class="card-edit">
+                <svg class="icon-edit">
+                    <use xlink:href="#ico_edit"></use>
+                </svg>
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center"
+                 *ngIf="isEditMain && !isEditRowItem">
+                <button
+                    pButton
+                    type="button"
+                    icon="pi pi-check"
+                    (click)="updateMainLang()"
+                    class="p-button-raised p-button-rounded p-button-text p-button-success p-mr-3 p-ml-3"
+                ></button>
+                <button
+                    pButton
+                    type="button"
+                    icon="pi pi-times"
+                    (click)="isEditMain = false"
+                    class="p-button-raised p-button-rounded p-button-text p-button-danger"
+                ></button>
+            </div>
+        </div>
+        <p *ngIf="myLang && !isEditMain">{{ getLabelLanguage(myLang?.name) | translate }}</p>
+        <p *ngIf="!myLang && !isEditMain" jhiTranslate="profile.language.noMainLang"></p>
+        <p-dropdown
+            class="col-4 md-6  lg-4"
+            *ngIf="isEditMain && !isEditRowItem"
+            optionLabel="label"
+            optionValue="value"
+            [placeholder]="'profile.language.selectLang' | translate"
+            [(ngModel)]="selectMainLang"
+            [options]="listMainLangSelect"
+        >
+            <ng-template pTemplate="selectedItem">
+                <div>{{ selectMainLang.label | translate }}</div>
+            </ng-template>
+            <ng-template let-language pTemplate="item">
+                <div>{{ language.label | translate }}</div>
+            </ng-template>
+        </p-dropdown>
+    </div>
+    <div class="foreign-language p-col-8 p-md-12 p-lg-10 p-lg-8">
+        <p-table #table [value]="othersLang" dataKey="id" editMode="row">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th class="title-table--left" jhiTranslate="profile.language.otherLang"></th>
+                    <th class="title-table--right" jhiTranslate="profile.language.level"></th>
+                    <th class="title-table--right" jhiTranslate="profile.language.action"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-lg let-editing="editing" let-ri="rowIndex">
+                <tr class="row-item" [pEditableRow]="lg">
+                    <td pEditableColumn>
+                        <p-cellEditor class="cell--disable cell--disable-left" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <p-dropdown
+                                    class="p-col-8 p-md-12 p-lg-10 p-lg-8"
+                                    [disabled]="checkEnableDropDownLanguage()"
+                                    [(ngModel)]="languageSelected"
+                                    optionLabel="label"
+                                    optionValue="value"
+                                    [options]="optionLanguage"
+                                >
+                                    <ng-template pTemplate="selectedItem">
+                                        <div>{{ languageSelected.label | translate }}</div>
+                                    </ng-template>
+                                    <ng-template let-language pTemplate="item">
+                                        <div>{{ language.label | translate }}</div>
+                                    </ng-template>
+                                </p-dropdown>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ getLabelLanguage(lg.name) | translate }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td pEditableColumn class="title-table--right">
+                        <p-cellEditor class="cell--disable" (click)="onClick($event)">
+                            <ng-template pTemplate="input">
+                                <p-dropdown
+                                    panelStyleClass="p-col-10 p-md-12 p-lg-10 "
+                                    [(ngModel)]="levelSelected"
+                                    optionLabel="label"
+                                    optionValue="value"
+                                    [options]="levels"
+                                    placeholder="Select a language"
+                                >
+                                    <ng-template pTemplate="selectedItem">
+                                        <div>{{ levelSelected.label | translate }}</div>
+                                    </ng-template>
+                                    <ng-template let-level pTemplate="item">
+                                        <div>{{ level.label | translate }}</div>
+                                    </ng-template>
+                                </p-dropdown>
+                            </ng-template>
+                            <ng-template pTemplate="output">
+                                {{ getLabelLevel(lg.level) | translate }}
+                            </ng-template>
+                        </p-cellEditor>
+                    </td>
+                    <td class="action">
+                        <div *ngIf="!editing && !isEditRowItem" (click)="onEditRowItem(lg)" pInitEditableRow
+                             class="p-mr-4">
+                            <svg class="icon-edit icon-edit--sm">
+                                <use xlink:href="#ico_edit"></use>
+                            </svg>
+                        </div>
+                        <div *ngIf="!editing && !isEditRowItem" pSaveEditableRow (click)="openModalDelete(lg)">
+                            <svg class="icon-edit icon-edit--sm icon-edit--red">
+                                <use xlink:href="#ico_delete"></use>
+                            </svg>
+                        </div>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            type="button"
+                            pSaveEditableRow
+                            icon="pi pi-check"
+                            (click)="updateOtherLang(lg)"
+                            class="p-button-rounded p-button-raised p-button-text p-button-success p-mr-3"
+                        ></button>
+                        <button
+                            *ngIf="editing"
+                            pButton
+                            type="button"
+                            pCancelEditableRow
+                            icon="pi pi-times"
+                            (click)="onRowEditCancel(lg)"
+                            class="p-button-rounded p-button-raised p-button-text p-button-danger"
+                        ></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <button
+            [disabled]="checkEnableButtonAdd()"
+            pButton
+            type="button"
+            icon="pi pi-plus"
+            class="p-button-raised icon-add"
+            (click)="addOtherLang()"
+        ></button>
+    </div>
+</div>
+
+<p-dialog [(visible)]="showModalDelete" [header]="'profile.comfirmtitle'|translate" [modal]="true">
+    <div class="body-modal">
+        <p class="title-modal" jhiTranslate="profile.comfirm"></p>
+        <div class="group-button">
+            <button type="button" class="btn btn-confirm" (click)="deleteItem()" jhiTranslate="profile.yes"></button>
+            <button type="button" class="btn btn-cancel" (click)="showModalDelete=false"
+                    jhiTranslate="profile.no"></button>
+        </div>
+    </div>
+</p-dialog>

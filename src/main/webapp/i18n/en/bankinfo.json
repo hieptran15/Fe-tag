@@ -1,0 +1,18 @@
+{
+  "bankinfo": {
+    "title": "Bank information",
+    "main": "You need a bank account to receive payments for your Tagon projects. Please note that while you can only designate one account to receive payments, you can change your account details at any time.",
+    "btnedit": "Edit",
+    "form": {
+      "label": "Bank type",
+      "number": "Enter your account number",
+      "currentpassword": "Current password",
+      "currentpassword.placeholder": "Enter password",
+      "validpass": "Password can not be blank",
+      "newpassword": "New Password *",
+      "confirm": "Confirm *",
+      "confirm.placeholder": "Confirm password",
+      "match": "Passwords do not match"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "TagOnApp": {
+    "registerInfo": {
+      "home": {
+        "title": "Register Infos",
+        "createLabel": "Create a new Register Info",
+        "createOrEditLabel": "Create or edit a Register Info",
+        "notFound": "No Register Infos found"
+      },
+      "created": "A new Register Info is created with identifier {{ param }}",
+      "updated": "A Register Info is updated with identifier {{ param }}",
+      "deleted": "A Register Info is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Register Info {{ id }}?"
+      },
+      "detail": {
+        "title": "Register Info"
+      },
+      "name": "Name",
+      "image": "Image",
+      "secondaryImages": "Secondary Images",
+      "description": "Description",
+      "role": "Role",
+      "mobile": "Mobile",
+      "personalId": "Personal Id",
+      "personalIdImage": "Personal Id Image",
+      "drinkLevel": "Drink Level",
+      "study": "Study",
+      "lang": "Lang",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At"
+    }
+  }
+}

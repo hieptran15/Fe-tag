@@ -1,0 +1,44 @@
+{
+  "TagOnApp": {
+    "registerInfo": {
+      "home": {
+        "title": "Danh sách đăng ký",
+        "createLabel": "Thêm mới một đăng ký",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật thông tin đăng ký",
+        "notFound": "Không tìm thấy bản ghi nào"
+      },
+      "created": "Một đăng ký mới được tạo với định danh {{ param }}",
+      "updated": "Một đăng ký cập nhật với định danh {{ param }}",
+      "deleted": "Một đăng ký đã xóa với định danh {{ param }}",
+      "approved": "Phê duyệt đăng ký thành công",
+      "invited": "Gửi email mời phỏng vấn thành công",
+      "invite": {
+        "title": "Thông tin mời phỏng vấn",
+        "place": "Địa điểm",
+        "time": "Thời gian phỏng vấn"
+      },
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Đăng ký {{ id }}?"
+      },
+      "detail": {
+        "title": "Thông tin đăng ký"
+      },
+      "name": "Tên",
+      "address": "Địa chỉ",
+      "username": "Tên đăng nhập",
+      "image": "Ảnh",
+      "secondaryImages": "Ảnh khác",
+      "description": "Giới thiệu",
+      "role": "Vị trí",
+      "mobile": "Mobile",
+      "personalId": "CMT / CCCD",
+      "personalIdImage": "Ảnh CMT / CCCD",
+      "driverLicenseMotorbike": "Ảnh bằng lái xe máy",
+      "driverLicenseCar": "Ảnh bằng lái ô tô",
+      "study": "Study",
+      "lang": "Lang",
+      "createdAt": "Created At",
+      "updatedAt": "Updated At"
+    }
+  }
+}

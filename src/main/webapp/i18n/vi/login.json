@@ -1,0 +1,37 @@
+{
+  "login": {
+    "title": "Đăng nhập",
+    "policy": "Chính sách",
+    "invitefriend": "Mời bạn bè",
+    "form": {
+      "password": "Mật khẩu",
+      "password.placeholder": "Mật khẩu",
+      "rememberme": "Ghi nhớ",
+      "button": "Đăng nhập"
+    },
+    "reset": {
+      "success": "Thành công! Bạn vui lòng kiểm tra hộp thư để đặt lại mật khẩu",
+      "fail": "Thất bại, Email bạn nhập không hợp lệ"
+    },
+    "messages": {
+      "successtitle": "Thành công",
+      "changesuccess": "Đổi mật khẩu thành công",
+      "errortitle": "Thất bại",
+      "success": "Đăng nhập thành công",
+      "minlenght": "Mật khẩu có ít phất 8 kí tự",
+      "error": {
+        "authentication": "Đăng nhập thất bại! Bạn vui lòng kiểm tra thông tin đăng nhập và thử lại."
+      }
+    },
+    "popup": {
+      "header": "Xác nhận",
+      "title": "Quên mật khẩu",
+      "cancel": "Hủy bỏ",
+      "send": "Gửi",
+      "main": "Chúng tôi sẽ gửi cho bạn một email có liên kết để đặt lại mật khẩu của bạn. Vui lòng kiểm tra kỹ địa chỉ email của bạn bên dưới, sau đó click vào 'Gửi'."
+    },
+    "password": {
+      "forgot": "Quên mật khẩu?"
+    }
+  }
+}

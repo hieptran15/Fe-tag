@@ -1,0 +1,378 @@
+<div class='title-info'>
+    <p jhiTranslate='profile.info.title'></p> &nbsp;
+    <div *ngIf='!isEditProfile'>
+        <svg (click)='showEditProfile(profile)' role='button' class='icon-edit'>
+            <use xlink:href='#ico_edit'></use>
+        </svg>
+    </div>
+</div>
+<div *ngIf='!isEditProfile' class='card-top'>
+    <div class='main '>
+        <div class='main__left'>
+            <div class='item-info'>
+                <b jhiTranslate='profile.info.name'>Họ và tên</b>
+                <p> {{ profile?.firstName }}&nbsp;
+                    {{ profile?.lastName }}
+                </p>
+            </div>
+            <div class='item-info'>
+                <b>Email</b>
+                <p> {{ profile?.email }}&nbsp;
+                </p>
+            </div>
+
+            <div class='item-info'>
+                <b jhiTranslate='profile.info.phone'>SĐT</b>
+                <p> {{ profile?.phone }}&nbsp;
+                </p>
+            </div>
+        </div>
+        <div class='main__center'>
+            <div class='item-info'>
+                <b jhiTranslate='profile.info.national'>Quốc gia</b>
+                <p> {{ profile?.country?.name }}&nbsp;
+                </p>
+            </div>
+            <div class='item-info'>
+                <b jhiTranslate='profile.info.city'>Tỉnh/Thành phố</b>
+                <p> {{ profile?.city?.name }}&nbsp;
+                </p>
+            </div>
+
+            <div class='item-info'>
+                <b jhiTranslate='profile.info.district'>Quận/Huyện</b>
+                <p> {{ profile?.district?.name }}&nbsp;
+                </p>
+            </div>
+            <div class='item-info'>
+                <b jhiTranslate='profile.info.address'>Địa chỉ</b>
+                <p [pTooltip]='profile?.address' class='item-info__address'> {{ profile?.address }}&nbsp;
+
+                </p>
+            </div>
+
+
+            <div class='item-info'>
+                <b jhiTranslate='profile.info.postalCode'>Mã bưu điện</b>
+                <p> {{ profile?.postalCode }}&nbsp;
+                </p>
+            </div>
+        </div>
+        <div class='main__right'>
+            <div class='item-info'>
+                <b jhiTranslate='profile.demographic.gender'>Giới tính</b>
+                <p>{{getMale()|translate}}</p>
+            </div>
+            <div class='item-info'>
+                <b jhiTranslate='profile.info.yearOfBirth'>Năm sinh</b>
+                <p> {{ profile?.yearOfBirth }}&nbsp;
+                </p>
+            </div>
+
+            <div class='item-info'>
+                <b jhiTranslate='profile.demographic.ethnic'>Dân tộc</b>
+                <p> {{ profile?.ethnic?.name }}&nbsp;
+                </p>
+            </div>
+            <div class='item-info'>
+                <b>CCCD/CMTND</b>
+                <p> {{ profile?.identification }}&nbsp;
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf='isEditProfile' class='card-top'>
+    <div class='main__edit'>
+        <form class='form-edit' name='form' #myForm='ngForm' (ngSubmit)='check(myForm)'>
+            <div class="form-edit__main">
+                <div class='main__left'>
+                    <span jhiTranslate='profile.info.name'></span>&nbsp;<span style='color: red'>*</span>
+                    <div class='form-group item-info' (click)="onClick($event)">
+                        <input [(ngModel)]='firstName' ngModel #emailWithPattern='ngModel'
+                               (keypress)='onKeyPress($event, regex)'
+                               minlength='2' maxlength='50'
+                               name='firstName' type='text' class='form-control' required
+                               placeholder='{{"profile.info.name" | translate}}' />
+                        <div *ngIf="emailWithPattern.invalid && (emailWithPattern.touched && emailWithPattern.dirty)"
+                             class='errorMessage'>
+                            <p jhiTranslate='profile.validate.name' *ngIf='emailWithPattern.errors?.required'>
+                                Name is a required field!
+                            </p>
+                            <p jhiTranslate='profile.info.validate.minnumber' *ngIf='emailWithPattern.errors?.minlength'>
+                                Tên ít nhất 2 kí tự
+                            </p>
+                            <p jhiTranslate='profile.info.validate.maxnumber' *ngIf='emailWithPattern.errors?.maxlength'>
+                                Tên tối đa 50 kí tự
+                            </p>
+                        </div>
+                    </div>
+                    <div class='form-group item-info'>
+                        <label jhiTranslate='profile.info.email'></label>
+                        <p> {{ profile?.email }}
+                    </div>
+                    <span jhiTranslate='profile.info.phone'></span>&nbsp;<span style='color: red'>*</span>
+                    <div class='form-group item-info'>
+                        <div class='item-info__phone'>
+                            <p-dropdown [editable]='false' [options]='listPhone'
+                                        required
+                                        optionLabel='name' [(ngModel)]='firstPhone'
+                                        name='phone'>
+                            </p-dropdown> &nbsp;
+                            <input id='select__phone'
+                                   [(ngModel)]='phone'
+                                   ngModel
+                                   (keypress)='onKeyPressPhone($event)'
+                                   class='form-control'
+                                   #phoneWithPattern='ngModel'
+                                   type='text'
+                                   maxlength='9'
+                                   required name='phone'
+                                   placeholder='Phone'>
+                            </input>
+
+                            <div *ngIf=' phoneWithPattern.touched && phoneWithPattern.dirty' class='errorMessage1'>
+                                <p jhiTranslate='profile.validate.phone' *ngIf='phoneWithPattern.errors?.required'>
+                                    Name is a required field!
+                                </p>
+                                <p jhiTranslate='profile.info.validate.phonenumber'
+                                   *ngIf='phoneWithPattern.errors?.pattern'>
+                                    SĐT không đúng định dạng
+                                </p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class='main__center'>
+                    <span jhiTranslate='profile.info.national'></span> <span style='color: red'>*</span>
+                    <div class='form-group item-info'>
+
+                        <p-dropdown [editable]='false' [options]='listCountry'
+                                    required
+                                    #countryWithPattern='ngModel'
+                                    optionLabel='name' (onChange)='getCity($event)' [(ngModel)]='country'
+                                    placeholder='{{"profile.info.countryplaceholder" | translate}}'
+                                    name='country'>
+                            <ng-template pTemplate='selectedItem'>
+                                <div>{{country?.name }}</div>
+                            </ng-template>
+                            <ng-template let-country pTemplate='item'>
+                                <div [class.active]='country'>{{country.label }}</div>
+                            </ng-template>
+                        </p-dropdown>
+                        <div *ngIf="!validator.country && (!countryWithPattern.touched && !countryWithPattern.dirty)"
+                             class='errorMessage'>
+                            <p>
+                                {{'profile.validate.country' | translate}}
+                            </p>
+                        </div>
+                    </div>
+                    <span jhiTranslate='profile.info.city'></span> <span style='color: red'>*</span>
+                    <div class='form-group item-info'>
+
+                        <p-dropdown [hideTransitionOptions]="'0ms'" [editable]='false' [options]='listCity'
+                                    editable='true'
+                                    required
+                                    #cityWithPattern='ngModel'
+                                    optionLabel='name' [filter]='true' (onChange)='getDistrict($event)'
+                                    placeholder='{{"profile.info.countryplaceholder" | translate}}'
+                                    [(ngModel)]='city' name='city'>
+                            <ng-template pTemplate='selectedItem'>
+                                <div>{{city?.name }}</div>
+                            </ng-template>
+                            <ng-template let-city pTemplate='item'>
+                                <div [class.active]=city>{{city.label }}</div>
+                            </ng-template>
+                        </p-dropdown>
+                        <div *ngIf="!validator.country && (!cityWithPattern.touched && !cityWithPattern.dirty)"
+                             class='errorMessage'>
+                            <p>
+                                {{'profile.validate.city' | translate}}
+                            </p>
+                        </div>
+                    </div>
+
+                    <span jhiTranslate='profile.info.district'></span> <span style='color: red'>*</span>
+                    <div class='form-group item-info'>
+
+                        <p-dropdown [hideTransitionOptions]="'0ms'"  [options]='listDistrict'
+                                    required
+                                    [(ngModel)]='district'
+                                    optionLabel='name' [filter]='true'
+                                    placeholder="{{'profile.info.countryplaceholder' | translate}}"
+                                    (onChange)='districtChange($event)'
+                                    name='district'>
+                            <ng-template pTemplate='selectedItem'>
+                                <div>{{district?.name }}</div>
+                            </ng-template>
+                            <ng-template let-district pTemplate='item'>
+                                <div [class.active]=district>{{district.label }}</div>
+                            </ng-template>
+                        </p-dropdown>
+                        <div *ngIf="!validator.country"
+                             class='errorMessage'>
+                            <p>
+                                {{'profile.validate.district' | translate}}
+                            </p>
+                        </div>
+                    </div>
+                    <span jhiTranslate='profile.info.address'></span>&nbsp;<span style='color: red'>*</span>
+                    <div class='form-group item-info' (click)="onClick($event)">
+                        <input [(ngModel)]='address' (keypress)='onKeyPress($event, regex)' ngModel #addressWithPattern='ngModel' minlength='3' maxlength='100'
+                               required placeholder='{{"profile.info.addressplaceholder" | translate}}'
+                               name='address' type='text' class='form-control' />
+                        <div *ngIf=' addressWithPattern.touched && addressWithPattern.dirty' maxlength='255'
+                             class='errorMessage'>
+                            <p jhiTranslate='profile.validate.address' *ngIf='addressWithPattern.errors?.required'>
+                                Name is a required field!
+                            </p>
+                            <p jhiTranslate='profile.info.validate.address' *ngIf='addressWithPattern.errors?.minlength'>
+                                Địa chỉ ít nhất 3 kí tự
+                            </p>
+
+                        </div>
+                    </div>
+
+                    <span jhiTranslate='profile.info.postalCode'></span>&nbsp;<span style='color: red'>*</span>
+                    <div class='form-group item-info'>
+                        <input [(ngModel)]='postalCode'
+                               class='p-inputNumber1'
+                               pattern='^[0-9\-\+]{2,10}$'
+                               mode='decimal'
+                               class='form-control'
+                               minlength='2' ngModel
+                               #postalcodeWithPattern='ngModel'
+                               maxlength='10' required
+                               placeholder='{{"profile.info.postcodeplaceholder" | translate}}'
+                               name='postalCode' type='tel' />
+                        <div
+                            *ngIf=' postalcodeWithPattern!.invalid &&  postalcodeWithPattern.touched && postalcodeWithPattern.dirty'
+                            class='errorMessage'>
+                            <p jhiTranslate='profile.validate.postalcode'
+                               *ngIf='postalcodeWithPattern.errors?.required'>
+                                Postal is a required field!
+                            </p>
+                            <p jhiTranslate='profile.info.validate.postalcode'
+                               *ngIf='postalcodeWithPattern.errors?.minlength'>
+                                Mã bưu điện tối thiểu 2 kí tự
+                            </p>
+                            <p jhiTranslate='profile.info.validate.phone'
+                               *ngIf='!postalcodeWithPattern.errors?.minlength && postalcodeWithPattern.errors?.pattern'>
+                                Mã bưu điện không đúng định dạng
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class='main__right'>
+                    <span jhiTranslate='profile.demographic.gender'></span> <span style='color: red'>*</span>
+                    <div class='form-group item-info'>
+
+                        <p-dropdown [editable]='false' [options]='sexes'
+                                    optionLabel='name'
+                                    required
+                                    optionValue='code'
+                                    [(ngModel)]='gender'
+                                    (onChange)='changeValueSex($event)'
+                                    placeholder='{{"profile.info.countryplaceholder" | translate}}'
+                                    name='sex'>
+                            <ng-template pTemplate='selectedItem'>
+                                <div>{{gender?.name | translate}}</div>
+                            </ng-template>
+                            <ng-template let-sex pTemplate='item'>
+                                <div [class.active]=sex>{{sex.label | translate}}</div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                    <span jhiTranslate='profile.info.yearOfBirth'></span> <span style='color: red'>*</span>
+                    <div class='form-group item-info'>
+
+                        <p-dropdown [editable]='false' [options]='listYears'
+                                    editable='true' [(ngModel)]='years'
+                                    required
+                                    placeholder='{{"profile.info.countryplaceholder" | translate}}' name='yearOfbirth'>
+                            <ng-template pTemplate='selectedItem'>
+                                <div>{{years}}</div>
+                            </ng-template>
+                            <ng-template let-year pTemplate='item'>
+                                <div [class.active]=year>{{year.label}}</div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                    <span jhiTranslate='profile.demographic.ethnic'>Dân tộc</span> <span style='color: red'>*</span>
+                    <div class='form-group item-info'>
+
+                        <p-dropdown [editable]='false' [options]='ListEthnics'
+                                    editable='true'
+                                    required
+                                    optionLabel='name' placeholder='{{"profile.info.countryplaceholder" | translate}}'
+                                    [(ngModel)]='ethnics' name='ethnic' [filter]='true'>
+                            <ng-template pTemplate='selectedItem'>
+                                <div>{{ethnics?.name }}</div>
+                            </ng-template>
+                            <ng-template let-ethnic pTemplate='item'>
+                                <div [class.active]=ethnic>{{ethnic.label }}</div>
+                            </ng-template>
+                        </p-dropdown>
+                    </div>
+                    <span jhiTranslate='profile.info.identificate'></span>&nbsp;<span style='color: red'>*</span>
+                    <div class='form-group item-info'>
+                        <input [(ngModel)]='identification' pattern='^[0-9\-\+]{9,12}$' ngModel
+                               #identificationWithPattern='ngModel' minlength='9' maxlength='12'
+                               name='identification'
+                               type='tel' required
+                               class='form-control'
+                               placeholder='{{"profile.info.identificate" | translate}}'/>
+
+                        <div
+                            *ngIf='identificationWithPattern!.invalid && identificationWithPattern.touched && identificationWithPattern.dirty'
+                            class='errorMessage'>
+                            <p jhiTranslate='profile.validate.identificate'
+                               *ngIf='identificationWithPattern.errors?.required'>
+                                Name is a required field!
+                            </p>
+                            <p jhiTranslate='profile.info.validate.minIdentiti'
+                               *ngIf='identificationWithPattern.errors?.maxlength'>
+                                CMTND tối đa 12 số
+                            </p>
+                            <p jhiTranslate='profile.info.validate.match' *ngIf='identificationWithPattern.errors?.pattern'>
+                                CMTND không hợp lệ
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class='row-button' id='btn_save'>
+                <button [disabled]='myForm.invalid' class='btn btn-confirm' type='submit'
+                        jhiTranslate='profile.save'>Lưu
+                </button>
+                <button class='btn btn-cancel' (click)='isEditProfile = false  ' jhiTranslate='profile.cancel'>Hủy bỏ
+                </button>
+            </div>
+        </form>
+    </div>
+
+</div>
+<p-dialog [(visible)]='showModalProfile' header='{{"profile.comfirmtitle" | translate}}' [modal]='true'
+          [style]="{width: '26rem'}">
+    <div class='body-modal'>
+        <p class='title-modal' jhiTranslate='profile.comfirm'></p>
+        <div class='group-button'>
+            <button type='submit' class='btn btn-confirm' (click)='confirmProfile()'
+                    jhiTranslate='profile.yes'></button>
+            <button type='button' class='btn btn-cancel' (click)='showModalProfile = false'
+                    jhiTranslate='profile.no'></button>
+        </div>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]='showModalSuccess' header=' ' [modal]='true' [style]="{width: '30vw'}">
+    <div class='body_modal'>
+        <svg class='icon-success'>
+            <use xlink:href='#ico_success'></use>
+        </svg>
+        <b jhiTranslate='profile.savesuccess'>Lưu thông tin thành công</b>
+    </div>
+</p-dialog>

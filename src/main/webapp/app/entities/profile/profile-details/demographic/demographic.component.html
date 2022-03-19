@@ -1,0 +1,92 @@
+<div class='card_title'>
+    <h5>Thông tin nhân khẩu học</h5>
+</div>
+<div *ngIf='!isEditDemographic' class='card_bottom'>
+    <div class='row_contact'>
+        <div class="title">Các thông tin</div>
+        <button class='btn btn_edit' (click)='showEditLocation(profile)'>Chỉnh sửa</button>
+    </div>
+    <div class='row_location'>
+        <table>
+            <tr>
+                <td class="sex">Giới tính</td>
+                <td>{{ profile.sex === 1 ? 'Nam' : 'Nữ' }}</td>
+            </tr>
+            <tr>
+                <td class="sex">Năm sinh</td>
+                <td>{{ profile ? profile.yearOfBirth : null }}</td>
+
+            </tr>
+            <tr>
+                <td class="sex">Dân tộc</td>
+                <td >{{ (profile && profile.ethnic) ? profile.ethnic.name : null }}</td>
+
+            </tr>
+            <tr>
+                <td class="sex">CCCD/CMTND</td>
+                <td>{{ profile ? profile.identification : null }}</td>
+
+            </tr>
+        </table>
+    </div>
+</div>
+<div *ngIf='isEditDemographic' class='card_bottom'>
+    <div class='row_contact'>
+        <div class="title">Các thông tin</div>
+    </div>
+    <form class='form_edit' [formGroup]='locationForm' name='form'>
+        <div class='form-group'>
+            <label>Giới tính *</label>
+            <div class="d-flex">
+                <div class="d-flex check_box_sex">
+                    <input (change)="changeGender($event)" id="male" formControlName="gender" name="gender" value='1' type='radio' class='form-control' /> &nbsp;
+                    <label for="male">Nam</label>
+                </div>
+                <div class="d-flex check_box_sex">
+                    <input (change)="changeGender($event)" id="female" formControlName="gender" name="gender" value='0' type='radio' class='form-control' />&nbsp;
+                    <label for="female">Nữ</label>
+                </div>
+                <div class="d-flex check_box_sex">
+                    <input (change)="changeGender($event)" id="other" formControlName="gender" name="gender" value='other' type='radio' class='form-control' />&nbsp;
+                    <label for="other">Khác</label>
+                </div>
+            </div>
+        </div>
+        <div class='form-group'>
+            <label>Năm sinh</label>
+            <select formControlName='yearOfBirth' name='yearOfBirth' class='form-control no-border'>
+                <option [value]="year" *ngFor='let year of listYears'>{{ year }}</option>
+            </select>
+        </div>
+        <div class='form-group'>
+            <label>Dân tộc</label>
+            <select formControlName='ethnic' name='ethnic' class='form-control no-border' (change)='onEthnicChanged($event)'>
+                <option [value]="et.code" *ngFor='let et of ethnics'>{{ et.name }}</option>
+            </select>
+        </div>
+        <div class='form-group'>
+            <label>CCCD/CMTND</label>
+            <input formControlName='identification' name='identification' type='tel' class='form-control no-border'
+                   placeholder='CCCD/CMTND' />
+            <div
+                *ngIf='checkDemographic.identification.errors && (checkDemographic.identification.touched || checkDemographic.identification.dirty)'
+                class='errorMessage'>
+                <div *ngIf='checkDemographic.identification.errors.required'>CCCD/CMTNDkhông được để trống</div>
+            </div>
+        </div>
+        <div class='row_button'>
+            <button class='btn btn_save' (click)='showModalDemographic = true'>Lưu</button>
+            <button class='btn btn_cancel' (click)='isEditDemographic=false'>Hủy bỏ</button>
+        </div>
+    </form>
+</div>
+
+<p-dialog [(visible)]='showModalDemographic' header='' [modal]='true'>
+    <div class='body_modal'>
+        <p class='title_modal'>Bạn có chắc chắn thực hiện thao tác này không?</p>
+        <div class='group_button'>
+            <button type='button' class='btn btn_confirm' (click)='confirmDemographic()'>Có</button>
+            <button type='button' class='btn btn_cancel' (click)='showModalDemographic = false'>Không</button>
+        </div>
+    </div>
+</p-dialog>

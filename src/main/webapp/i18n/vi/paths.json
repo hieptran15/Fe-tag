@@ -1,0 +1,16 @@
+{
+  "path": {
+    "home": "Trang chủ",
+    "projects": "Dự án",
+    "info": "Thông tin cơ bản",
+    "profile": "Hồ sơ cá nhân",
+    "detail": "Chi tiết",
+    "language": "Ngôn ngữ",
+    "exp": "Kinh nghiệm",
+    "edu": "Học vấn",
+    "bank": "Thông tin ngân hàng",
+    "deals": "Thỏa thuận",
+    "doc": "Tài liệu liên quan",
+    "404": "Không tìm thấy trang"
+  }
+}

@@ -1,0 +1,166 @@
+@import '../../../../../content/scss/vars';
+
+.title-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 22px 20px;
+  border-bottom: 1px solid rgba(205, 205, 205, 0.5);
+
+  p {
+    font-weight: 600;
+    font-size: $font20;
+    color: $textColor;
+    margin-bottom: 0;
+  }
+}
+
+.main {
+  padding: 35px 0 0 20px;
+
+  .main-language {
+    padding-bottom: 30px;
+
+    p {
+      font-weight: normal;
+      color: $textColor;
+      margin-bottom: 0;
+    }
+
+    &__title {
+      display: flex;
+      margin-bottom: 10px;
+
+      p {
+        font-weight: 600;
+        color: $textColor;
+      }
+    }
+  }
+
+  .foreign-language {
+    padding: 0;
+    border-top: 1px solid rgba(205, 205, 205, 0.5);
+  }
+}
+
+.card-edit {
+  margin-left: 16px;
+}
+
+.icon-edit {
+  width: $font18;
+  height: $font18;
+  fill: $textColor;
+  cursor: pointer;
+
+  &--red {
+    fill: $deleteColor;
+  }
+
+  &--sm {
+    width: $font14;
+    height: $font14;
+  }
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px !important;
+}
+
+.title-table--right {
+  text-align: center !important;
+}
+
+.title-table--left {
+  padding: 16px 16px 16px 0 !important;
+}
+
+.cell--disable {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1rem;
+
+  &-left {
+    padding: 1rem 1rem 1rem 0;
+    justify-content: flex-start;
+  }
+}
+
+.no-outline:focus {
+  outline: none;
+}
+
+.icon-add {
+  margin-bottom: 30px;
+  margin-top: 20px;
+  width: 36px;
+  height: 36px;
+  background: $primary-color;
+  border: none;
+
+  &:hover {
+    background: $primary-color;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+:host ::ng-deep {
+  .p-datatable-responsive-demo .p-datatable-tbody > tr > td .p-column-title {
+    display: none;
+  }
+
+  .p-dropdown {
+    width: auto;
+  }
+
+  .p-dropdown-panel {
+    right: 0;
+  }
+
+  p-dropdown {
+    height: 27px;
+    border-radius: 6px;
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 40rem) {
+  :host ::ng-deep {
+    .p-datatable {
+      &.p-datatable-responsive-demo {
+        .p-datatable-thead > tr > th,
+        .p-datatable-tfoot > tr > td {
+          display: none !important;
+        }
+
+        .p-datatable-tbody > tr > td {
+          text-align: left;
+          display: block;
+          width: 100%;
+          float: left;
+          clear: left;
+          border: 0 none;
+
+          .p-column-title {
+            padding: 0.4rem;
+            min-width: 30%;
+            display: inline-block;
+            margin: -0.4em 1em -0.4em -0.4rem;
+            font-weight: bold;
+          }
+
+          &:last-child {
+            border-bottom: 1px solid var(--surface-d);
+          }
+        }
+      }
+    }
+  }
+}
